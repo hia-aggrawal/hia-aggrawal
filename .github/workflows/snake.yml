@@ -7,6 +7,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - "assets/github-snake*.svg"
 
 jobs:
   generate:
@@ -16,19 +18,22 @@ jobs:
     timeout-minutes: 5
 
     steps:
+      - name: check out profile repository
+        uses: actions/checkout@v4
+
       - name: generate github contribution snake
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           github_token: ${{ secrets.FLOWER_GITHUB_TOKEN }}
           outputs: |
-            dist/github-snake.svg
-            dist/github-snake-dark.svg?palette=github-dark
+            assets/github-snake.svg
+            assets/github-snake-dark.svg?palette=github-dark
 
-      - name: push snake assets to output branch
-        uses: crazy-max/ghaction-github-pages@v3.1.0
-        with:
-          target_branch: output
-          build_dir: dist
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: commit updated snake assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/github-snake.svg assets/github-snake-dark.svg
+          git diff --cached --quiet || git commit -m "chore: update contribution snake"
+          git push

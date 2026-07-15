@@ -38,9 +38,9 @@ I like finding the shape inside complicated problems—then building systems tha
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hia-aggrawal/hia-aggrawal/output/github-snake-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/hia-aggrawal/hia-aggrawal/output/github-snake.svg" />
-    <img alt="GitHub contribution snake" src="https://raw.githubusercontent.com/hia-aggrawal/hia-aggrawal/output/github-snake.svg" />
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/github-snake-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="./assets/github-snake.svg" />
+    <img alt="GitHub contribution snake" src="./assets/github-snake.svg" />
   </picture>
 </p>
 
