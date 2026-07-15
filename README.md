@@ -34,17 +34,15 @@ I like finding the shape inside complicated problems—then building systems tha
 
 ---
 
-## GitHub flower field 🐝
+## GitHub pulse
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=hia-aggrawal&hide_border=true&background=FFFFFF&ring=76243A&fire=E8C83F&currStreakLabel=17182C&sideNums=17182C&currStreakNum=76243A&sideLabels=587354&dates=64748B" alt="Hia's GitHub streak" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hia-aggrawal/hia-aggrawal/output/github-snake-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/hia-aggrawal/hia-aggrawal/output/github-snake.svg" />
+    <img alt="GitHub contribution snake" src="https://raw.githubusercontent.com/hia-aggrawal/hia-aggrawal/output/github-snake.svg" />
+  </picture>
 </p>
-
-<p align="center">
-  <img width="100%" src="https://raw.githubusercontent.com/hia-aggrawal/hia-aggrawal/output/contribution-flower-field.svg" alt="An anime-inspired flower field grown from Hia's GitHub contributions" />
-</p>
-
-<p align="center"><sub>Every active day grows a patch. More contributions make it bloom more fully.</sub></p>
 
 ---
 
