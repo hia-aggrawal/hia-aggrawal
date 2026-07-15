@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="270" viewBox="0 0 1000 270" role="img" aria-labelledby="title desc">
+  <title id="title">Hia's contribution garden</title>
+  <desc id="desc">The garden is waiting for GitHub Actions to add contribution flowers.</desc>
+  <defs>
+    <pattern id="paper" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#17182c" stroke-opacity=".05"/></pattern>
+  </defs>
+  <rect width="1000" height="270" rx="18" fill="#f2eadb"/>
+  <rect width="1000" height="270" rx="18" fill="url(#paper)"/>
+  <path d="M0 224Q145 194 280 224t280 0 280 0 280 0v46H0Z" fill="#587354" fill-opacity=".18"/>
+  <path d="M0 229Q145 199 280 229t280 0 280 0 280 0" fill="none" stroke="#587354" stroke-width="2"/>
+  <text x="40" y="46" fill="#76243a" font-family="monospace" font-size="11" letter-spacing="2">CONTRIBUTION FIELD / LIVE STUDY</text>
+  <text x="500" y="140" text-anchor="middle" fill="#17182c" font-family="Georgia,serif" font-size="25" font-style="italic">the garden grows after its first workflow run…</text>
+  <text x="500" y="170" text-anchor="middle" fill="#17182c" opacity=".65" font-family="monospace" font-size="10">Actions → Update contribution garden → Run workflow</text>
+</svg>
