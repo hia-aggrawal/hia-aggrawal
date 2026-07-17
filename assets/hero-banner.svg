@@ -1,23 +1,57 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="260" viewBox="0 0 1120 260" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
   <defs>
     <radialGradient id="sky" cx="50%" cy="0%" r="100%">
-      <stop offset="0%" stop-color="#0a0d1c"/>
-      <stop offset="60%" stop-color="#060812"/>
+      <stop offset="0%" stop-color="#1a2450"/>
+      <stop offset="45%" stop-color="#111a38"/>
+      <stop offset="100%" stop-color="#060812"/>
     </radialGradient>
-    <radialGradient id="heroGlow"><stop offset="0%" stop-color="rgb(231, 235, 232)" stop-opacity="0.55"/><stop offset="100%" stop-color="rgb(231, 235, 232)" stop-opacity="0"/></radialGradient>
+    <radialGradient id="heroGlow-0"><stop offset="0%" stop-color="rgb(167, 205, 253)" stop-opacity="0.55"/><stop offset="100%" stop-color="rgb(167, 205, 253)" stop-opacity="0"/></radialGradient>
+    <radialGradient id="heroGlow-1"><stop offset="0%" stop-color="rgb(178, 210, 249)" stop-opacity="0.55"/><stop offset="100%" stop-color="rgb(178, 210, 249)" stop-opacity="0"/></radialGradient>
+    <radialGradient id="heroGlow-2"><stop offset="0%" stop-color="rgb(197, 219, 243)" stop-opacity="0.55"/><stop offset="100%" stop-color="rgb(197, 219, 243)" stop-opacity="0"/></radialGradient>
+    <radialGradient id="heroGlow-3"><stop offset="0%" stop-color="rgb(217, 228, 236)" stop-opacity="0.55"/><stop offset="100%" stop-color="rgb(217, 228, 236)" stop-opacity="0"/></radialGradient>
+    <radialGradient id="heroGlow-4"><stop offset="0%" stop-color="rgb(231, 235, 232)" stop-opacity="0.55"/><stop offset="100%" stop-color="rgb(231, 235, 232)" stop-opacity="0"/></radialGradient>
+    <radialGradient id="heroGlow-5"><stop offset="0%" stop-color="rgb(245, 242, 227)" stop-opacity="0.55"/><stop offset="100%" stop-color="rgb(245, 242, 227)" stop-opacity="0"/></radialGradient>
+    <radialGradient id="heroGlow-6"><stop offset="0%" stop-color="rgb(253, 245, 225)" stop-opacity="0.55"/><stop offset="100%" stop-color="rgb(253, 245, 225)" stop-opacity="0"/></radialGradient>
     <radialGradient id="moon" cx="35%" cy="35%" r="65%">
-      <stop offset="0%" stop-color="#f5f3ea"/>
-      <stop offset="100%" stop-color="#c9c6ba"/>
+      <stop offset="0%" stop-color="#fff3b0"/>
+      <stop offset="100%" stop-color="#e0b83a"/>
     </radialGradient>
+    <linearGradient id="horizonGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2c3a63" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#3a4a78" stop-opacity="0.8"/>
+    </linearGradient>
     <clipPath id="heroFrame"><rect x="0" y="0" width="1120" height="260" rx="18"/></clipPath>
+    <filter id="auroraBlur" x="-20%" y="-50%" width="140%" height="200%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+    <linearGradient id="taglineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fbcfe8"/>
+      <stop offset="20%" stop-color="#f0abfc"/>
+      <stop offset="40%" stop-color="#c4b5fd"/>
+      <stop offset="60%" stop-color="#86efac"/>
+      <stop offset="80%" stop-color="#7dd3fc"/>
+      <stop offset="100%" stop-color="#fde68a"/>
+    </linearGradient>
+    <linearGradient id="shootingStar" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8ecf5" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#e8ecf5" stop-opacity="0.85"/>
+    </linearGradient>
   </defs>
   <style>
     @keyframes twinkle { 0%, 100% { opacity: 0.5; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1); } }
-    .twinkle { transform-origin: center; transform-box: fill-box; animation: twinkle 3.4s ease-in-out infinite; }
-    @media (prefers-reduced-motion: reduce) { .twinkle { animation: none; } }
+    .twinkle { transform-origin: center; transform-box: fill-box; animation: twinkle var(--dur, 3.4s) ease-in-out infinite; animation-delay: var(--delay, 0s); }
+    @keyframes auroraDrift { 0% { transform: translateX(-16px); } 100% { transform: translateX(16px); } }
+    .aurora { animation: auroraDrift 9s ease-in-out infinite alternate; }
+    @media (prefers-reduced-motion: reduce) { .twinkle { animation: none; } .aurora { animation: none; } }
   </style>
   <g clip-path="url(#heroFrame)">
     <rect x="0" y="0" width="1120" height="260" fill="url(#sky)"/>
+    <g filter="url(#auroraBlur)" opacity="0.3">
+      <path class="aurora" d="M -60 70 C 180 10 360 120 560 55 C 760 -10 940 90 1180 40" fill="none" stroke="#2fbf87" stroke-width="30" stroke-linecap="round"/>
+      <path class="aurora" style="animation-delay:-3s" d="M -60 125 C 220 165 420 80 640 135 C 860 190 1000 110 1180 150" fill="none" stroke="#6fd9ae" stroke-width="24" stroke-linecap="round"/>
+      <path class="aurora" style="animation-delay:-6s" d="M -60 30 C 200 65 400 5 620 45 C 840 85 1000 30 1180 15" fill="none" stroke="#c355c9" stroke-width="34" stroke-linecap="round"/>
+      <path class="aurora" style="animation-delay:-1.5s" d="M -60 95 C 210 140 430 60 650 100 C 870 140 1010 70 1180 100" fill="none" stroke="#8f5fd6" stroke-width="30" stroke-linecap="round"/>
+    </g>
     <circle cx="725.2" cy="38.2" r="1.0" fill="rgba(243, 240, 228,0.15)"/>
   <circle cx="64.2" cy="68.8" r="0.8" fill="rgba(246, 242, 227,0.36)"/>
   <circle cx="471.7" cy="135.6" r="0.7" fill="rgba(192, 216, 244,0.19)"/>
@@ -46,12 +80,40 @@
   <circle cx="767.5" cy="50.6" r="0.7" fill="rgba(251, 244, 225,0.22)"/>
   
     <circle cx="1040" cy="54" r="20" fill="url(#moon)" opacity="0.9"/>
-    <g class="twinkle">
-      <circle cx="980" cy="46" r="8.0" fill="url(#heroGlow)"/>
-      <path d="M 980.0 41.0 Q 980.8 45.2 985.0 46.0 Q 980.8 46.8 980.0 51.0 Q 979.2 46.8 975.0 46.0 Q 979.2 45.2 980.0 41.0 Z" fill="rgb(231, 235, 232)"/>
+    <g class="twinkle" style="--dur:2.60s;--delay:0.00s">
+      <circle cx="62" cy="22" r="5.6" fill="url(#heroGlow-0)"/>
+      <path d="M 62.0 18.5 Q 62.6 21.4 65.5 22.0 Q 62.6 22.6 62.0 25.5 Q 61.4 22.6 58.5 22.0 Q 61.4 21.4 62.0 18.5 Z" fill="rgb(167, 205, 253)"/>
     </g>
-    <path d="M0 260 L0 210 Q 201.6 188 118 198 L 138 200 A 30 30 0 0 1 198 200 L 228 196 Q 616 206 1120 214 L 1120 260 Z" fill="#03040a" opacity="0.9"/>
-    <rect x="165" y="164" width="6" height="10" fill="#03040a" opacity="0.9"/>
-    <text x="60" y="108" font-size="30" font-weight="600" fill="#e8ecf5" letter-spacing="0.2">Hia Aggrawal</text>
+    <g class="twinkle" style="--dur:2.95s;--delay:-0.50s">
+      <circle cx="470" cy="42" r="7.2" fill="url(#heroGlow-1)"/>
+      <path d="M 470.0 37.5 Q 470.7 41.3 474.5 42.0 Q 470.7 42.7 470.0 46.5 Q 469.3 42.7 465.5 42.0 Q 469.3 41.3 470.0 37.5 Z" fill="rgb(178, 210, 249)"/>
+    </g>
+    <g class="twinkle" style="--dur:3.30s;--delay:-1.00s">
+      <circle cx="640" cy="105" r="8.0" fill="url(#heroGlow-2)"/>
+      <path d="M 640.0 100.0 Q 640.8 104.2 645.0 105.0 Q 640.8 105.8 640.0 110.0 Q 639.2 105.8 635.0 105.0 Q 639.2 104.2 640.0 100.0 Z" fill="rgb(197, 219, 243)"/>
+    </g>
+    <g class="twinkle" style="--dur:3.65s;--delay:-1.50s">
+      <circle cx="790" cy="30" r="6.4" fill="url(#heroGlow-3)"/>
+      <path d="M 790.0 26.0 Q 790.6 29.4 794.0 30.0 Q 790.6 30.6 790.0 34.0 Q 789.4 30.6 786.0 30.0 Q 789.4 29.4 790.0 26.0 Z" fill="rgb(217, 228, 236)"/>
+    </g>
+    <g class="twinkle" style="--dur:4.00s;--delay:-2.00s">
+      <circle cx="900" cy="125" r="8.8" fill="url(#heroGlow-4)"/>
+      <path d="M 900.0 119.5 Q 900.9 124.1 905.5 125.0 Q 900.9 125.9 900.0 130.5 Q 899.1 125.9 894.5 125.0 Q 899.1 124.1 900.0 119.5 Z" fill="rgb(231, 235, 232)"/>
+    </g>
+    <g class="twinkle" style="--dur:4.35s;--delay:-2.50s">
+      <circle cx="550" cy="165" r="6.4" fill="url(#heroGlow-5)"/>
+      <path d="M 550.0 161.0 Q 550.6 164.4 554.0 165.0 Q 550.6 165.6 550.0 169.0 Q 549.4 165.6 546.0 165.0 Q 549.4 164.4 550.0 161.0 Z" fill="rgb(245, 242, 227)"/>
+    </g>
+    <g class="twinkle" style="--dur:4.70s;--delay:-3.00s">
+      <circle cx="980" cy="46" r="8.0" fill="url(#heroGlow-6)"/>
+      <path d="M 980.0 41.0 Q 980.8 45.2 985.0 46.0 Q 980.8 46.8 980.0 51.0 Q 979.2 46.8 975.0 46.0 Q 979.2 45.2 980.0 41.0 Z" fill="rgb(253, 245, 225)"/>
+    </g>
+    <line x1="750" y1="40" x2="860" y2="75" stroke="url(#shootingStar)" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="860" cy="75" r="1.6" fill="#e8ecf5"/>
+    <rect x="0" y="150" width="1120" height="110" fill="url(#horizonGlow)"/>
+    <path d="M0 260 L0 210 Q 201.6 188 118 198 L 138 200 A 30 30 0 0 1 198 200 L 228 196 Q 616 206 1120 214 L 1120 260 Z" fill="#020306"/>
+    <rect x="165" y="164" width="6" height="10" fill="#020306"/>
+    <text x="60" y="108" font-size="32" font-weight="600" fill="#e8ecf5" letter-spacing="0.2">Hia Aggrawal</text>
+    <text x="60" y="134" font-size="15" fill="url(#taglineGradient)">AI Engineer @ IBM | CS @ UofT</text>
   </g>
 </svg>

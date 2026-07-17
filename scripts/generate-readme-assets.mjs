@@ -51,27 +51,105 @@ function ambientDust(seed, W, H, count) {
   return dust
 }
 
-// ---------- Label/value card: dark sky, ambient dust, rounded corners, baked text ----------
-function generateLabelValueCard(filename, entries) {
+// ---------- Field Notes constellation: 4 colorful stars in a vertical chain, transparent bg, light/dark ----------
+function generateFieldNotesConstellation() {
+  const ENTRIES = [
+    { label: 'Studying', value: 'Honours B.Sc., Computer Science (PEY Co-op), University of Toronto Mississauga · 2022–2027' },
+    { label: 'Currently', value: 'AI Engineering Intern at IBM, building agent workflows and context-aware systems' },
+    { label: 'Focus', value: 'Applied AI, backend systems, and full-stack product engineering' },
+    { label: 'Beyond', value: 'Music, art, crochet, and travel' },
+  ]
+
   const W = 1120
   const ROW_H = 74
   const PAD_TOP = 40
-  const PAD_BOTTOM = 32
-  const H = PAD_TOP + entries.length * ROW_H + PAD_BOTTOM
+  const H = 2 * PAD_TOP + (ENTRIES.length - 1) * ROW_H
+  const railX = 50
+  const jitter = [10, -8, 6, -4]
+  const textX = 90
+  const escape = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+
+  for (const mode of ['dark', 'light']) {
+    const palette = PALETTES[mode]
+    const lineColor = palette.strokeGray.join(',')
+    const labelColor = mode === 'light' ? '5b6472' : '6f7d99'
+    const valueColor = mode === 'light' ? '1f2937' : 'e8ecf5'
+
+    const starX = ENTRIES.map((_, i) => railX + jitter[i])
+    const starY = ENTRIES.map((_, i) => PAD_TOP + i * ROW_H)
+
+    const lines = starX
+      .slice(0, -1)
+      .map((x, i) => `<line x1="${x}" y1="${starY[i]}" x2="${starX[i + 1]}" y2="${starY[i + 1]}" stroke="rgba(${lineColor},0.35)" stroke-width="1" stroke-dasharray="2 3"/>`)
+      .join('\n  ')
+
+    const defs = []
+    const stars = ENTRIES.map((entry, i) => {
+      const x = starX[i]
+      const y = starY[i]
+      const r = 7
+      const color = stageColor(i / (ENTRIES.length - 1), palette)
+      const gradId = `fnGlow-${mode}-${i}`
+      defs.push(`<radialGradient id="${gradId}"><stop offset="0%" stop-color="rgb(${color})" stop-opacity="0.55"/><stop offset="100%" stop-color="rgb(${color})" stop-opacity="0"/></radialGradient>`)
+      return `<g class="twinkle" style="--dur:${(2.8 + i * 0.4).toFixed(1)}s;--delay:${(-i * 0.6).toFixed(1)}s">
+      <circle cx="${x}" cy="${y}" r="${r * 2.2}" fill="url(#${gradId})"/>
+      <path d="${sparklePath(x, y, r, r)}" fill="rgb(${color})"/>
+    </g>
+    <text x="${textX}" y="${y - 8}" font-size="14" font-weight="600" letter-spacing="0.06em" fill="#${labelColor}">${escape(entry.label.toUpperCase())}</text>
+    <text x="${textX}" y="${y + 14}" font-size="18" fill="#${valueColor}">${escape(entry.value)}</text>`
+    })
+
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
+  <defs>
+    ${defs.join('\n    ')}
+  </defs>
+  <style>
+    @keyframes twinkle { 0%, 100% { opacity: 0.55; transform: scale(0.88); } 50% { opacity: 1; transform: scale(1); } }
+    .twinkle { transform-origin: center; transform-box: fill-box; animation: twinkle var(--dur, 3s) ease-in-out infinite; animation-delay: var(--delay, 0s); }
+    @media (prefers-reduced-motion: reduce) { .twinkle { animation: none; } }
+  </style>
+  ${lines}
+  ${stars.join('\n  ')}
+</svg>
+`
+    writeFileSync(`${OUT}/field-notes-constellation-${mode}.svg`, svg)
+  }
+  console.log('wrote field-notes-constellation-{dark,light}.svg')
+}
+
+// ---------- Label/value card: dark sky, ambient dust, rounded corners, baked text ----------
+function generateLabelValueCard(filename, entries, { width = 1120, rowHeight = 74 } = {}) {
+  const W = width
+  const ROW_H = rowHeight
+  const PAD_TOP = 40
+  const lastEntry = entries[entries.length - 1]
+  const lastLines = Array.isArray(lastEntry.value) ? lastEntry.value.length : 1
+  const lastCy = PAD_TOP + (entries.length - 1) * ROW_H + 10
+  const lastLineY = lastCy + 26 + (lastLines - 1) * 23
+  const H = lastLineY + PAD_TOP
   const textX = 60
   const dust = ambientDust(filename, W, H, 22)
 
+  const escape = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+
   const rows = entries.map((entry, i) => {
     const cy = PAD_TOP + i * ROW_H + 10
-    return `<text x="${textX}" y="${cy}" font-size="12.5" font-weight="600" letter-spacing="0.06em" fill="#6f7d99">${entry.label.toUpperCase()}</text>
-  <text x="${textX}" y="${cy + 26}" font-size="18" fill="#e8ecf5">${entry.value}</text>`
+    const values = Array.isArray(entry.value) ? entry.value : [entry.value]
+    const valueLines = values
+      .map((value, line) => `<text x="${textX}" y="${cy + 26 + line * 23}" font-size="${W < 700 ? 15 : 18}" fill="#e8ecf5">${escape(value)}</text>`)
+      .join('\n  ')
+    return `<text x="${textX}" y="${cy}" font-size="12.5" font-weight="600" letter-spacing="0.06em" fill="#6f7d99">${escape(entry.label.toUpperCase())}</text>
+  ${valueLines}`
   }).join('\n  ')
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
   <defs>
     <radialGradient id="sky" cx="50%" cy="0%" r="100%">
-      <stop offset="0%" stop-color="#0a0d1c"/>
-      <stop offset="60%" stop-color="#060812"/>
+      <stop offset="0%" stop-color="#241a47"/>
+      <stop offset="30%" stop-color="#3a2262"/>
+      <stop offset="55%" stop-color="#5c2a5a"/>
+      <stop offset="75%" stop-color="#431f3f"/>
+      <stop offset="100%" stop-color="#060812"/>
     </radialGradient>
     <clipPath id="frame-${filename}"><rect x="0" y="0" width="${W}" height="${H}" rx="18"/></clipPath>
   </defs>
@@ -150,41 +228,89 @@ function generateHero() {
   const darkPalette = PALETTES.dark
   const dust = ambientDust('hero-v2', W, H * 0.62, 26)
 
-  const sx = 980, sy = 46, sr = 5
-  const sColor = stageColor(0.75, darkPalette)
+  const STARS = [
+    { x: 62, y: 22, r: 3.5, t: 0.08 },
+    { x: 470, y: 42, r: 4.5, t: 0.2 },
+    { x: 640, y: 105, r: 5, t: 0.4 },
+    { x: 790, y: 30, r: 4, t: 0.6 },
+    { x: 900, y: 125, r: 5.5, t: 0.75 },
+    { x: 550, y: 165, r: 4, t: 0.9 },
+    { x: 980, y: 46, r: 5, t: 0.98 },
+  ]
+  const starDefs = []
+  const starMarkup = STARS.map((s, i) => {
+    const color = stageColor(s.t, darkPalette)
+    const gradId = `heroGlow-${i}`
+    starDefs.push(`<radialGradient id="${gradId}"><stop offset="0%" stop-color="rgb(${color})" stop-opacity="0.55"/><stop offset="100%" stop-color="rgb(${color})" stop-opacity="0"/></radialGradient>`)
+    return `<g class="twinkle" style="--dur:${(2.6 + i * 0.35).toFixed(2)}s;--delay:${(-i * 0.5).toFixed(2)}s">
+      <circle cx="${s.x}" cy="${s.y}" r="${(s.r * 1.6).toFixed(1)}" fill="url(#${gradId})"/>
+      <path d="${sparklePath(s.x, s.y, s.r, s.r)}" fill="rgb(${color})"/>
+    </g>`
+  }).join('\n    ')
 
   const domeX = 168, domeY = 200, domeR = 30
   const hillPath = `M0 ${H} L0 ${210} Q ${W * 0.18} ${188} ${domeX - domeR - 20} ${198} L ${domeX - domeR} ${200} A ${domeR} ${domeR} 0 0 1 ${domeX + domeR} ${200} L ${domeX + domeR + 30} ${196} Q ${W * 0.55} ${206} ${W} ${214} L ${W} ${H} Z`
 
+  const shootX1 = 750, shootY1 = 40, shootX2 = 860, shootY2 = 75
+
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
   <defs>
     <radialGradient id="sky" cx="50%" cy="0%" r="100%">
-      <stop offset="0%" stop-color="#0a0d1c"/>
-      <stop offset="60%" stop-color="#060812"/>
+      <stop offset="0%" stop-color="#1a2450"/>
+      <stop offset="45%" stop-color="#111a38"/>
+      <stop offset="100%" stop-color="#060812"/>
     </radialGradient>
-    <radialGradient id="heroGlow"><stop offset="0%" stop-color="rgb(${sColor})" stop-opacity="0.55"/><stop offset="100%" stop-color="rgb(${sColor})" stop-opacity="0"/></radialGradient>
+    ${starDefs.join('\n    ')}
     <radialGradient id="moon" cx="35%" cy="35%" r="65%">
-      <stop offset="0%" stop-color="#f5f3ea"/>
-      <stop offset="100%" stop-color="#c9c6ba"/>
+      <stop offset="0%" stop-color="#fff3b0"/>
+      <stop offset="100%" stop-color="#e0b83a"/>
     </radialGradient>
+    <linearGradient id="horizonGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2c3a63" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#3a4a78" stop-opacity="0.8"/>
+    </linearGradient>
     <clipPath id="heroFrame"><rect x="0" y="0" width="${W}" height="${H}" rx="18"/></clipPath>
+    <filter id="auroraBlur" x="-20%" y="-50%" width="140%" height="200%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+    <linearGradient id="taglineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fbcfe8"/>
+      <stop offset="20%" stop-color="#f0abfc"/>
+      <stop offset="40%" stop-color="#c4b5fd"/>
+      <stop offset="60%" stop-color="#86efac"/>
+      <stop offset="80%" stop-color="#7dd3fc"/>
+      <stop offset="100%" stop-color="#fde68a"/>
+    </linearGradient>
+    <linearGradient id="shootingStar" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8ecf5" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#e8ecf5" stop-opacity="0.85"/>
+    </linearGradient>
   </defs>
   <style>
     @keyframes twinkle { 0%, 100% { opacity: 0.5; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1); } }
-    .twinkle { transform-origin: center; transform-box: fill-box; animation: twinkle 3.4s ease-in-out infinite; }
-    @media (prefers-reduced-motion: reduce) { .twinkle { animation: none; } }
+    .twinkle { transform-origin: center; transform-box: fill-box; animation: twinkle var(--dur, 3.4s) ease-in-out infinite; animation-delay: var(--delay, 0s); }
+    @keyframes auroraDrift { 0% { transform: translateX(-16px); } 100% { transform: translateX(16px); } }
+    .aurora { animation: auroraDrift 9s ease-in-out infinite alternate; }
+    @media (prefers-reduced-motion: reduce) { .twinkle { animation: none; } .aurora { animation: none; } }
   </style>
   <g clip-path="url(#heroFrame)">
     <rect x="0" y="0" width="${W}" height="${H}" fill="url(#sky)"/>
+    <g filter="url(#auroraBlur)" opacity="0.3">
+      <path class="aurora" d="M -60 70 C 180 10 360 120 560 55 C 760 -10 940 90 1180 40" fill="none" stroke="#2fbf87" stroke-width="30" stroke-linecap="round"/>
+      <path class="aurora" style="animation-delay:-3s" d="M -60 125 C 220 165 420 80 640 135 C 860 190 1000 110 1180 150" fill="none" stroke="#6fd9ae" stroke-width="24" stroke-linecap="round"/>
+      <path class="aurora" style="animation-delay:-6s" d="M -60 30 C 200 65 400 5 620 45 C 840 85 1000 30 1180 15" fill="none" stroke="#c355c9" stroke-width="34" stroke-linecap="round"/>
+      <path class="aurora" style="animation-delay:-1.5s" d="M -60 95 C 210 140 430 60 650 100 C 870 140 1010 70 1180 100" fill="none" stroke="#8f5fd6" stroke-width="30" stroke-linecap="round"/>
+    </g>
     ${dust}
     <circle cx="1040" cy="54" r="20" fill="url(#moon)" opacity="0.9"/>
-    <g class="twinkle">
-      <circle cx="${sx}" cy="${sy}" r="${(sr * 1.6).toFixed(1)}" fill="url(#heroGlow)"/>
-      <path d="${sparklePath(sx, sy, sr, sr)}" fill="rgb(${sColor})"/>
-    </g>
-    <path d="${hillPath}" fill="#03040a" opacity="0.9"/>
-    <rect x="${domeX - 3}" y="${domeY - domeR - 6}" width="6" height="10" fill="#03040a" opacity="0.9"/>
-    <text x="60" y="108" font-size="30" font-weight="600" fill="#e8ecf5" letter-spacing="0.2">Hia Aggrawal</text>
+    ${starMarkup}
+    <line x1="${shootX1}" y1="${shootY1}" x2="${shootX2}" y2="${shootY2}" stroke="url(#shootingStar)" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="${shootX2}" cy="${shootY2}" r="1.6" fill="#e8ecf5"/>
+    <rect x="0" y="150" width="${W}" height="${H - 150}" fill="url(#horizonGlow)"/>
+    <path d="${hillPath}" fill="#020306"/>
+    <rect x="${domeX - 3}" y="${domeY - domeR - 6}" width="6" height="10" fill="#020306"/>
+    <text x="60" y="108" font-size="32" font-weight="600" fill="#e8ecf5" letter-spacing="0.2">Hia Aggrawal</text>
+    <text x="60" y="134" font-size="15" fill="url(#taglineGradient)">AI Engineer @ IBM | CS @ UofT</text>
   </g>
 </svg>
 `
@@ -192,14 +318,14 @@ function generateHero() {
   console.log('wrote hero-banner.svg')
 }
 
-// ---------- Expeditions timeline: dashed rail + sparkle markers, baked-in text ----------
+// ---------- Expeditions timeline: dashed rail + sparkle markers, full width, baked-in text ----------
 function generateExpeditionsTimeline() {
   const ENTRIES = [
     {
       role: 'AI Engineering Intern',
       org: 'IBM',
       dates: 'May 2026 – Present',
-      desc: 'Mapping business goals into strategic opportunities through agent workflows and context-aware systems.',
+      desc: 'Still in progress.',
     },
     {
       role: 'AI/ML Engineering Intern',
@@ -223,9 +349,8 @@ function generateExpeditionsTimeline() {
 
   const W = 1120
   const ROW_H = 122
-  const PAD_TOP = 54
-  const PAD_BOTTOM = 44
-  const H = PAD_TOP + ENTRIES.length * ROW_H + PAD_BOTTOM
+  const PAD_TOP = 80
+  const H = 2 * PAD_TOP + (ENTRIES.length - 1) * ROW_H
   const railX = 50
   const textX = 92
   const darkPalette = PALETTES.dark
@@ -244,17 +369,20 @@ function generateExpeditionsTimeline() {
       <circle cx="${railX}" cy="${cy}" r="11" fill="rgba(${color},0.28)"/>
       <path d="${sparklePath(railX, cy, 5.5, 5.5)}" fill="rgb(${color})"/>
     </g>`
-    const role = `<text x="${textX}" y="${cy - 12}" font-size="20" font-weight="600" fill="#e8ecf5">${escape(entry.role)} <tspan fill="#6f7d99" font-weight="400">&#183; ${escape(entry.org)}</tspan></text>`
-    const dates = `<text x="${textX}" y="${cy + 12}" font-size="14" fill="#5b6b86" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">${escape(entry.dates)}</text>`
-    const desc = `<text x="${textX}" y="${cy + 38}" font-size="16" font-style="italic" fill="#8a97b8">${escape(entry.desc)}</text>`
+    const role = `<text x="${textX}" y="${cy - 24}" font-size="22" font-weight="600" fill="#e8ecf5">${escape(entry.role)} <tspan fill="#6f7d99" font-weight="400">&#183; ${escape(entry.org)}</tspan></text>`
+    const dates = `<text x="${textX}" y="${cy}" font-size="16" fill="#5b6b86" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">${escape(entry.dates)}</text>`
+    const desc = `<text x="${textX}" y="${cy + 24}" font-size="18" font-style="italic" fill="#8a97b8">${escape(entry.desc)}</text>`
     return `${marker}\n  ${role}\n  ${dates}\n  ${desc}`
   }).join('\n  ')
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
   <defs>
     <radialGradient id="sky" cx="50%" cy="0%" r="100%">
-      <stop offset="0%" stop-color="#0a0d1c"/>
-      <stop offset="60%" stop-color="#060812"/>
+      <stop offset="0%" stop-color="#241a47"/>
+      <stop offset="30%" stop-color="#3a2262"/>
+      <stop offset="55%" stop-color="#5c2a5a"/>
+      <stop offset="75%" stop-color="#431f3f"/>
+      <stop offset="100%" stop-color="#060812"/>
     </radialGradient>
     <clipPath id="timelineFrame"><rect x="0" y="0" width="${W}" height="${H}" rx="18"/></clipPath>
   </defs>
@@ -302,7 +430,7 @@ function linkedinIcon(mode, palette) {
   const color = stageColor(0.35, palette)
   return `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
   <rect x="3" y="3" width="16" height="16" rx="3" fill="none" stroke="rgb(${color})" stroke-width="1.4"/>
-  <text x="11" y="15.5" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif" font-size="9" font-weight="700" fill="rgb(${color})" text-anchor="middle">in</text>
+  <text x="11" y="15.5" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="rgb(${color})" text-anchor="middle">in</text>
 </svg>
 `
 }
@@ -515,18 +643,7 @@ function generateGalaxies() {
 
 generateHero()
 generateExpeditionsTimeline()
-generateLabelValueCard('field-notes-card', [
-  { label: 'Studying', value: 'Honours B.Sc., Computer Science (PEY Co-op), University of Toronto Mississauga &#183; 2022&#8211;2027' },
-  { label: 'Currently', value: 'AI Engineering Intern at IBM, building agent workflows and context-aware systems' },
-  { label: 'Focus', value: 'Applied AI, backend systems, and full-stack product engineering' },
-  { label: 'Beyond', value: 'Music, art, crochet, and travel' },
-])
-generateLabelValueCard('skills-card', [
-  { label: 'Languages', value: 'Python &#183; Java &#183; JavaScript &#183; TypeScript &#183; C/C++ &#183; C#' },
-  { label: 'AI &amp; Data', value: 'scikit-learn &#183; XGBoost &#183; Hugging Face &#183; TensorFlow &#183; PyTorch &#183; pandas' },
-  { label: 'Frameworks', value: 'React &#183; Flask &#183; Spring Boot &#183; Tailwind CSS' },
-  { label: 'Cloud &amp; Platform', value: 'Azure &#183; Docker &#183; Kubernetes &#183; Power Platform' },
-])
+generateFieldNotesConstellation()
 generateAsteroidBelt()
 generateDivider()
 generateContactIcons()

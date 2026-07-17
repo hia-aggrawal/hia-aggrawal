@@ -6,8 +6,8 @@ const YEAR = new Date().getUTCFullYear()
 const PAD_X = 30
 const PAD_TOP = 34
 const PAD_BOTTOM = 30
-const CELL_W = 20
-const CELL_H = 26
+const CELL_W = 24
+const CELL_H = 46
 const K_NEAREST = 2
 
 async function fetchContributionDays(username, year) {
@@ -101,7 +101,7 @@ function buildStars(days) {
       const jitterX = (rand() - 0.5) * CELL_W * 0.8
       const jitterY = (rand() - 0.5) * CELL_H * 0.7
       const intensity = day.count / maxCount
-      const radius = 1.6 + Math.sqrt(day.count) * 1.6
+      const radius = 2.2 + Math.sqrt(day.count) * 2.1
       const duration = 2.4 + rand() * 2.2
       const delay = -rand() * duration
       stars.push({
@@ -148,7 +148,7 @@ function sparklePath(cx, cy, l, w) {
   return `M ${p(cx)} ${p(cy - l)} Q ${p(cx + w * k)} ${p(cy - l * k)} ${p(cx + w)} ${p(cy)} Q ${p(cx + w * k)} ${p(cy + l * k)} ${p(cx)} ${p(cy + l)} Q ${p(cx - w * k)} ${p(cy + l * k)} ${p(cx - w)} ${p(cy)} Q ${p(cx - w * k)} ${p(cy - l * k)} ${p(cx)} ${p(cy - l)} Z`
 }
 
-const CAPTION_BAND = 22
+const CAPTION_BAND = 44
 
 function renderSvg({ stars, weeks, cols, links, total, year }) {
   const width = PAD_X * 2 + weeks * CELL_W
@@ -156,13 +156,20 @@ function renderSvg({ stars, weeks, cols, links, total, year }) {
   const height = CAPTION_BAND + boxHeight
   const maxDist = Math.max(CELL_W, CELL_H) * 2.3
 
+  // Other README cards are baked at a 1120px reference width. This grid can be
+  // wider, and since GitHub scales every image down to the same content-column
+  // width, a wider source image shrinks its own text more on screen than the
+  // others unless font sizes are scaled up to compensate.
+  const REFERENCE_WIDTH = 1120
+  const textScale = width / REFERENCE_WIDTH
+
   const months = []
   let lastMonth = null
   cols.forEach((col, ci) => {
     const label = monthLabelForColumn(col)
     if (label && label !== lastMonth) {
       const x = PAD_X + ci * CELL_W
-      months.push(`<text x="${x.toFixed(1)}" y="${(PAD_TOP - 10).toFixed(1)}" font-size="10" fill="#5b6b7f">${label}</text>`)
+      months.push(`<text x="${x.toFixed(1)}" y="${(PAD_TOP - 10).toFixed(1)}" font-size="${(12 * textScale).toFixed(1)}" fill="#5b6b7f">${label}</text>`)
       lastMonth = label
     }
   })
@@ -218,7 +225,7 @@ function renderSvg({ stars, weeks, cols, links, total, year }) {
       .twinkle { animation: none; }
     }
   </style>
-  <text x="0" y="14" font-size="11" fill="#7f8bab">${year} &#183; ${total} contributions</text>
+  <text x="0" y="${(20 * textScale).toFixed(1)}" font-size="${(18 * textScale).toFixed(1)}" fill="#7f8bab">${year} &#183; ${total} contributions</text>
   <g transform="translate(0, ${CAPTION_BAND})" clip-path="url(#constellationFrame)">
     <rect x="0" y="0" width="${width}" height="${boxHeight}" fill="url(#sky)"/>
     ${months.join('\n    ')}

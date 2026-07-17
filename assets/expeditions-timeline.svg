@@ -1,10 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="586" viewBox="0 0 1120 586" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="526" viewBox="0 0 1120 526" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
   <defs>
     <radialGradient id="sky" cx="50%" cy="0%" r="100%">
-      <stop offset="0%" stop-color="#0a0d1c"/>
-      <stop offset="60%" stop-color="#060812"/>
+      <stop offset="0%" stop-color="#241a47"/>
+      <stop offset="30%" stop-color="#3a2262"/>
+      <stop offset="55%" stop-color="#5c2a5a"/>
+      <stop offset="75%" stop-color="#431f3f"/>
+      <stop offset="100%" stop-color="#060812"/>
     </radialGradient>
-    <clipPath id="timelineFrame"><rect x="0" y="0" width="1120" height="586" rx="18"/></clipPath>
+    <clipPath id="timelineFrame"><rect x="0" y="0" width="1120" height="526" rx="18"/></clipPath>
   </defs>
   <style>
     @keyframes twinkle { 0%, 100% { opacity: 0.55; transform: scale(0.88); } 50% { opacity: 1; transform: scale(1); } }
@@ -12,66 +15,66 @@
     @media (prefers-reduced-motion: reduce) { .twinkle { animation: none; } }
   </style>
   <g clip-path="url(#timelineFrame)">
-    <rect x="0" y="0" width="1120" height="586" fill="url(#sky)"/>
-    <circle cx="923.8" cy="428.4" r="1.5" fill="rgba(187, 214, 246,0.34)"/>
-  <circle cx="457.8" cy="354.6" r="1.5" fill="rgba(250, 243, 226,0.14)"/>
-  <circle cx="706.6" cy="507.5" r="1.0" fill="rgba(197, 219, 243,0.18)"/>
-  <circle cx="135.6" cy="242.5" r="1.2" fill="rgba(235, 237, 230,0.31)"/>
-  <circle cx="692.6" cy="189.3" r="1.5" fill="rgba(178, 210, 249,0.19)"/>
-  <circle cx="834.5" cy="486.3" r="0.7" fill="rgba(220, 230, 235,0.38)"/>
-  <circle cx="244.5" cy="571.2" r="1.4" fill="rgba(194, 217, 244,0.34)"/>
-  <circle cx="127.8" cy="503.2" r="0.9" fill="rgba(209, 225, 239,0.13)"/>
-  <circle cx="461.3" cy="388.7" r="0.7" fill="rgba(161, 202, 254,0.36)"/>
-  <circle cx="401.2" cy="150.4" r="0.9" fill="rgba(253, 245, 225,0.35)"/>
-  <circle cx="582.5" cy="150.5" r="1.0" fill="rgba(248, 243, 226,0.38)"/>
-  <circle cx="556.4" cy="210.0" r="0.6" fill="rgba(159, 201, 255,0.25)"/>
-  <circle cx="555.5" cy="535.8" r="1.2" fill="rgba(165, 204, 253,0.28)"/>
-  <circle cx="643.0" cy="240.3" r="1.0" fill="rgba(210, 225, 239,0.20)"/>
-  <circle cx="306.3" cy="173.0" r="1.2" fill="rgba(193, 217, 244,0.18)"/>
-  <circle cx="426.7" cy="212.2" r="0.8" fill="rgba(185, 213, 247,0.18)"/>
-  <circle cx="343.5" cy="565.8" r="1.4" fill="rgba(166, 204, 253,0.30)"/>
-  <circle cx="790.8" cy="135.9" r="1.2" fill="rgba(160, 202, 255,0.25)"/>
-  <circle cx="639.3" cy="317.3" r="0.7" fill="rgba(165, 204, 253,0.35)"/>
-  <circle cx="157.2" cy="20.0" r="0.8" fill="rgba(194, 218, 244,0.29)"/>
-  <circle cx="334.1" cy="16.3" r="0.7" fill="rgba(165, 204, 253,0.27)"/>
-  <circle cx="801.5" cy="356.9" r="1.3" fill="rgba(214, 227, 237,0.30)"/>
-  <circle cx="958.6" cy="358.0" r="1.0" fill="rgba(254, 246, 224,0.22)"/>
-  <circle cx="799.7" cy="330.0" r="1.1" fill="rgba(167, 205, 253,0.13)"/>
-  <circle cx="369.8" cy="311.4" r="1.3" fill="rgba(251, 244, 225,0.20)"/>
-  <circle cx="839.9" cy="564.4" r="0.9" fill="rgba(171, 207, 251,0.39)"/>
-  <circle cx="85.4" cy="354.2" r="0.9" fill="rgba(199, 220, 242,0.18)"/>
-  <circle cx="648.4" cy="491.9" r="1.2" fill="rgba(197, 219, 243,0.38)"/>
-  <circle cx="572.5" cy="457.6" r="0.6" fill="rgba(200, 220, 242,0.15)"/>
-  <circle cx="724.9" cy="18.0" r="1.0" fill="rgba(211, 226, 238,0.36)"/>
+    <rect x="0" y="0" width="1120" height="526" fill="url(#sky)"/>
+    <circle cx="923.8" cy="384.5" r="1.5" fill="rgba(187, 214, 246,0.34)"/>
+  <circle cx="457.8" cy="318.3" r="1.5" fill="rgba(250, 243, 226,0.14)"/>
+  <circle cx="706.6" cy="455.6" r="1.0" fill="rgba(197, 219, 243,0.18)"/>
+  <circle cx="135.6" cy="217.6" r="1.2" fill="rgba(235, 237, 230,0.31)"/>
+  <circle cx="692.6" cy="169.9" r="1.5" fill="rgba(178, 210, 249,0.19)"/>
+  <circle cx="834.5" cy="436.5" r="0.7" fill="rgba(220, 230, 235,0.38)"/>
+  <circle cx="244.5" cy="512.7" r="1.4" fill="rgba(194, 217, 244,0.34)"/>
+  <circle cx="127.8" cy="451.6" r="0.9" fill="rgba(209, 225, 239,0.13)"/>
+  <circle cx="461.3" cy="348.9" r="0.7" fill="rgba(161, 202, 254,0.36)"/>
+  <circle cx="401.2" cy="135.0" r="0.9" fill="rgba(253, 245, 225,0.35)"/>
+  <circle cx="582.5" cy="135.1" r="1.0" fill="rgba(248, 243, 226,0.38)"/>
+  <circle cx="556.4" cy="188.5" r="0.6" fill="rgba(159, 201, 255,0.25)"/>
+  <circle cx="555.5" cy="480.9" r="1.2" fill="rgba(165, 204, 253,0.28)"/>
+  <circle cx="643.0" cy="215.7" r="1.0" fill="rgba(210, 225, 239,0.20)"/>
+  <circle cx="306.3" cy="155.3" r="1.2" fill="rgba(193, 217, 244,0.18)"/>
+  <circle cx="426.7" cy="190.5" r="0.8" fill="rgba(185, 213, 247,0.18)"/>
+  <circle cx="343.5" cy="507.9" r="1.4" fill="rgba(166, 204, 253,0.30)"/>
+  <circle cx="790.8" cy="122.0" r="1.2" fill="rgba(160, 202, 255,0.25)"/>
+  <circle cx="639.3" cy="284.8" r="0.7" fill="rgba(165, 204, 253,0.35)"/>
+  <circle cx="157.2" cy="18.0" r="0.8" fill="rgba(194, 218, 244,0.29)"/>
+  <circle cx="334.1" cy="14.6" r="0.7" fill="rgba(165, 204, 253,0.27)"/>
+  <circle cx="801.5" cy="320.3" r="1.3" fill="rgba(214, 227, 237,0.30)"/>
+  <circle cx="958.6" cy="321.3" r="1.0" fill="rgba(254, 246, 224,0.22)"/>
+  <circle cx="799.7" cy="296.2" r="1.1" fill="rgba(167, 205, 253,0.13)"/>
+  <circle cx="369.8" cy="279.5" r="1.3" fill="rgba(251, 244, 225,0.20)"/>
+  <circle cx="839.9" cy="506.6" r="0.9" fill="rgba(171, 207, 251,0.39)"/>
+  <circle cx="85.4" cy="318.0" r="0.9" fill="rgba(199, 220, 242,0.18)"/>
+  <circle cx="648.4" cy="441.6" r="1.2" fill="rgba(197, 219, 243,0.38)"/>
+  <circle cx="572.5" cy="410.7" r="0.6" fill="rgba(200, 220, 242,0.15)"/>
+  <circle cx="724.9" cy="16.2" r="1.0" fill="rgba(211, 226, 238,0.36)"/>
   
-    <line x1="50" y1="54" x2="50" y2="420" stroke="rgba(140,150,175,0.4)" stroke-width="1" stroke-dasharray="2 4"/>
+    <line x1="50" y1="80" x2="50" y2="446" stroke="rgba(140,150,175,0.4)" stroke-width="1" stroke-dasharray="2 4"/>
     <g class="twinkle" style="--dur:2.8s;--delay:0.0s">
-      <circle cx="50" cy="54" r="11" fill="rgba(159, 201, 255,0.28)"/>
-      <path d="M 50.0 48.5 Q 50.9 53.1 55.5 54.0 Q 50.9 54.9 50.0 59.5 Q 49.1 54.9 44.5 54.0 Q 49.1 53.1 50.0 48.5 Z" fill="rgb(159, 201, 255)"/>
+      <circle cx="50" cy="80" r="11" fill="rgba(159, 201, 255,0.28)"/>
+      <path d="M 50.0 74.5 Q 50.9 79.1 55.5 80.0 Q 50.9 80.9 50.0 85.5 Q 49.1 80.9 44.5 80.0 Q 49.1 79.1 50.0 74.5 Z" fill="rgb(159, 201, 255)"/>
     </g>
-  <text x="92" y="42" font-size="20" font-weight="600" fill="#e8ecf5">AI Engineering Intern <tspan fill="#6f7d99" font-weight="400">&#183; IBM</tspan></text>
-  <text x="92" y="66" font-size="14" fill="#5b6b86" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">May 2026 – Present</text>
-  <text x="92" y="92" font-size="16" font-style="italic" fill="#8a97b8">Mapping business goals into strategic opportunities through agent workflows and context-aware systems.</text>
+  <text x="92" y="56" font-size="22" font-weight="600" fill="#e8ecf5">AI Engineering Intern <tspan fill="#6f7d99" font-weight="400">&#183; IBM</tspan></text>
+  <text x="92" y="80" font-size="16" fill="#5b6b86" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">May 2026 – Present</text>
+  <text x="92" y="104" font-size="18" font-style="italic" fill="#8a97b8">Still in progress.</text>
   <g class="twinkle" style="--dur:3.2s;--delay:-0.6s">
-      <circle cx="50" cy="176" r="11" fill="rgba(191, 216, 245,0.28)"/>
-      <path d="M 50.0 170.5 Q 50.9 175.1 55.5 176.0 Q 50.9 176.9 50.0 181.5 Q 49.1 176.9 44.5 176.0 Q 49.1 175.1 50.0 170.5 Z" fill="rgb(191, 216, 245)"/>
+      <circle cx="50" cy="202" r="11" fill="rgba(191, 216, 245,0.28)"/>
+      <path d="M 50.0 196.5 Q 50.9 201.1 55.5 202.0 Q 50.9 202.9 50.0 207.5 Q 49.1 202.9 44.5 202.0 Q 49.1 201.1 50.0 196.5 Z" fill="rgb(191, 216, 245)"/>
     </g>
-  <text x="92" y="164" font-size="20" font-weight="600" fill="#e8ecf5">AI/ML Engineering Intern <tspan fill="#6f7d99" font-weight="400">&#183; Alphavima Technologies</tspan></text>
-  <text x="92" y="188" font-size="14" fill="#5b6b86" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">May 2025 – Apr 2026</text>
-  <text x="92" y="214" font-size="16" font-style="italic" fill="#8a97b8">Built semantic recommendation, demand forecasting, and natural-language-to-SQL systems for enterprise CRM tooling.</text>
+  <text x="92" y="178" font-size="22" font-weight="600" fill="#e8ecf5">AI/ML Engineering Intern <tspan fill="#6f7d99" font-weight="400">&#183; Alphavima Technologies</tspan></text>
+  <text x="92" y="202" font-size="16" fill="#5b6b86" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">May 2025 – Apr 2026</text>
+  <text x="92" y="226" font-size="18" font-style="italic" fill="#8a97b8">Built semantic recommendation, demand forecasting, and natural-language-to-SQL systems for enterprise CRM tooling.</text>
   <g class="twinkle" style="--dur:3.6s;--delay:-1.2s">
-      <circle cx="50" cy="298" r="11" fill="rgba(223, 231, 234,0.28)"/>
-      <path d="M 50.0 292.5 Q 50.9 297.1 55.5 298.0 Q 50.9 298.9 50.0 303.5 Q 49.1 298.9 44.5 298.0 Q 49.1 297.1 50.0 292.5 Z" fill="rgb(223, 231, 234)"/>
+      <circle cx="50" cy="324" r="11" fill="rgba(223, 231, 234,0.28)"/>
+      <path d="M 50.0 318.5 Q 50.9 323.1 55.5 324.0 Q 50.9 324.9 50.0 329.5 Q 49.1 324.9 44.5 324.0 Q 49.1 323.1 50.0 318.5 Z" fill="rgb(223, 231, 234)"/>
     </g>
-  <text x="92" y="286" font-size="20" font-weight="600" fill="#e8ecf5">Software Developer Intern <tspan fill="#6f7d99" font-weight="400">&#183; Alphavima Technologies</tspan></text>
-  <text x="92" y="310" font-size="14" fill="#5b6b86" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">May 2024 – Aug 2024</text>
-  <text x="92" y="336" font-size="16" font-style="italic" fill="#8a97b8">Shipped two enterprise mobile apps end to end on the Microsoft Power Platform.</text>
+  <text x="92" y="300" font-size="22" font-weight="600" fill="#e8ecf5">Software Developer Intern <tspan fill="#6f7d99" font-weight="400">&#183; Alphavima Technologies</tspan></text>
+  <text x="92" y="324" font-size="16" fill="#5b6b86" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">May 2024 – Aug 2024</text>
+  <text x="92" y="348" font-size="18" font-style="italic" fill="#8a97b8">Shipped two enterprise mobile apps end to end on the Microsoft Power Platform.</text>
   <g class="twinkle" style="--dur:4.0s;--delay:-1.8s">
-      <circle cx="50" cy="420" r="11" fill="rgba(255, 246, 224,0.28)"/>
-      <path d="M 50.0 414.5 Q 50.9 419.1 55.5 420.0 Q 50.9 420.9 50.0 425.5 Q 49.1 420.9 44.5 420.0 Q 49.1 419.1 50.0 414.5 Z" fill="rgb(255, 246, 224)"/>
+      <circle cx="50" cy="446" r="11" fill="rgba(255, 246, 224,0.28)"/>
+      <path d="M 50.0 440.5 Q 50.9 445.1 55.5 446.0 Q 50.9 446.9 50.0 451.5 Q 49.1 446.9 44.5 446.0 Q 49.1 445.1 50.0 440.5 Z" fill="rgb(255, 246, 224)"/>
     </g>
-  <text x="92" y="408" font-size="20" font-weight="600" fill="#e8ecf5">Software Developer Intern <tspan fill="#6f7d99" font-weight="400">&#183; The Home Depot Canada</tspan></text>
-  <text x="92" y="432" font-size="14" fill="#5b6b86" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">May 2023 – Aug 2023</text>
-  <text x="92" y="458" font-size="16" font-style="italic" fill="#8a97b8">Strengthened delivery validation and order-tracking systems.</text>
+  <text x="92" y="422" font-size="22" font-weight="600" fill="#e8ecf5">Software Developer Intern <tspan fill="#6f7d99" font-weight="400">&#183; The Home Depot Canada</tspan></text>
+  <text x="92" y="446" font-size="16" fill="#5b6b86" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">May 2023 – Aug 2023</text>
+  <text x="92" y="470" font-size="18" font-style="italic" fill="#8a97b8">Strengthened delivery validation and order-tracking systems.</text>
   </g>
 </svg>

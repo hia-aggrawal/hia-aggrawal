@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="302" viewBox="0 0 1120 302" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
+  <defs>
+    <radialGradient id="fnGlow-dark-0"><stop offset="0%" stop-color="rgb(159, 201, 255)" stop-opacity="0.55"/><stop offset="100%" stop-color="rgb(159, 201, 255)" stop-opacity="0"/></radialGradient>
+    <radialGradient id="fnGlow-dark-1"><stop offset="0%" stop-color="rgb(191, 216, 245)" stop-opacity="0.55"/><stop offset="100%" stop-color="rgb(191, 216, 245)" stop-opacity="0"/></radialGradient>
+    <radialGradient id="fnGlow-dark-2"><stop offset="0%" stop-color="rgb(223, 231, 234)" stop-opacity="0.55"/><stop offset="100%" stop-color="rgb(223, 231, 234)" stop-opacity="0"/></radialGradient>
+    <radialGradient id="fnGlow-dark-3"><stop offset="0%" stop-color="rgb(255, 246, 224)" stop-opacity="0.55"/><stop offset="100%" stop-color="rgb(255, 246, 224)" stop-opacity="0"/></radialGradient>
+  </defs>
+  <style>
+    @keyframes twinkle { 0%, 100% { opacity: 0.55; transform: scale(0.88); } 50% { opacity: 1; transform: scale(1); } }
+    .twinkle { transform-origin: center; transform-box: fill-box; animation: twinkle var(--dur, 3s) ease-in-out infinite; animation-delay: var(--delay, 0s); }
+    @media (prefers-reduced-motion: reduce) { .twinkle { animation: none; } }
+  </style>
+  <line x1="60" y1="40" x2="42" y2="114" stroke="rgba(140,150,175,0.35)" stroke-width="1" stroke-dasharray="2 3"/>
+  <line x1="42" y1="114" x2="56" y2="188" stroke="rgba(140,150,175,0.35)" stroke-width="1" stroke-dasharray="2 3"/>
+  <line x1="56" y1="188" x2="46" y2="262" stroke="rgba(140,150,175,0.35)" stroke-width="1" stroke-dasharray="2 3"/>
+  <g class="twinkle" style="--dur:2.8s;--delay:0.0s">
+      <circle cx="60" cy="40" r="15.400000000000002" fill="url(#fnGlow-dark-0)"/>
+      <path d="M 60.0 33.0 Q 61.1 38.9 67.0 40.0 Q 61.1 41.1 60.0 47.0 Q 58.9 41.1 53.0 40.0 Q 58.9 38.9 60.0 33.0 Z" fill="rgb(159, 201, 255)"/>
+    </g>
+    <text x="90" y="32" font-size="14" font-weight="600" letter-spacing="0.06em" fill="#6f7d99">STUDYING</text>
+    <text x="90" y="54" font-size="18" fill="#e8ecf5">Honours B.Sc., Computer Science (PEY Co-op), University of Toronto Mississauga · 2022–2027</text>
+  <g class="twinkle" style="--dur:3.2s;--delay:-0.6s">
+      <circle cx="42" cy="114" r="15.400000000000002" fill="url(#fnGlow-dark-1)"/>
+      <path d="M 42.0 107.0 Q 43.1 112.9 49.0 114.0 Q 43.1 115.1 42.0 121.0 Q 40.9 115.1 35.0 114.0 Q 40.9 112.9 42.0 107.0 Z" fill="rgb(191, 216, 245)"/>
+    </g>
+    <text x="90" y="106" font-size="14" font-weight="600" letter-spacing="0.06em" fill="#6f7d99">CURRENTLY</text>
+    <text x="90" y="128" font-size="18" fill="#e8ecf5">AI Engineering Intern at IBM, building agent workflows and context-aware systems</text>
+  <g class="twinkle" style="--dur:3.6s;--delay:-1.2s">
+      <circle cx="56" cy="188" r="15.400000000000002" fill="url(#fnGlow-dark-2)"/>
+      <path d="M 56.0 181.0 Q 57.1 186.9 63.0 188.0 Q 57.1 189.1 56.0 195.0 Q 54.9 189.1 49.0 188.0 Q 54.9 186.9 56.0 181.0 Z" fill="rgb(223, 231, 234)"/>
+    </g>
+    <text x="90" y="180" font-size="14" font-weight="600" letter-spacing="0.06em" fill="#6f7d99">FOCUS</text>
+    <text x="90" y="202" font-size="18" fill="#e8ecf5">Applied AI, backend systems, and full-stack product engineering</text>
+  <g class="twinkle" style="--dur:4.0s;--delay:-1.8s">
+      <circle cx="46" cy="262" r="15.400000000000002" fill="url(#fnGlow-dark-3)"/>
+      <path d="M 46.0 255.0 Q 47.1 260.9 53.0 262.0 Q 47.1 263.1 46.0 269.0 Q 44.9 263.1 39.0 262.0 Q 44.9 260.9 46.0 255.0 Z" fill="rgb(255, 246, 224)"/>
+    </g>
+    <text x="90" y="254" font-size="14" font-weight="600" letter-spacing="0.06em" fill="#6f7d99">BEYOND</text>
+    <text x="90" y="276" font-size="18" fill="#e8ecf5">Music, art, crochet, and travel</text>
+</svg>
