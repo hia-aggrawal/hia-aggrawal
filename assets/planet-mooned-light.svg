@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
+  <defs><radialGradient id="glowMooned-light"><stop offset="0%" stop-color="rgb(93, 80, 105)" stop-opacity="0.28"/><stop offset="100%" stop-color="rgb(93, 80, 105)" stop-opacity="0"/></radialGradient></defs>
+  <circle cx="48" cy="48" r="29.9" fill="url(#glowMooned-light)"/>
+  <circle cx="48" cy="48" r="24.7" fill="none" stroke="rgba(90,96,112,0.5)" stroke-width="1" stroke-dasharray="2 3"/>
+  <circle cx="48" cy="48" r="13" fill="rgb(93, 80, 105)"/>
+  <ellipse cx="43.45" cy="43.45" rx="5.2" ry="3.6400000000000006" fill="#ffffff" opacity="0.22"/>
+  <circle cx="66.9" cy="32.1" r="2.9" fill="#5b6472"/>
+</svg>

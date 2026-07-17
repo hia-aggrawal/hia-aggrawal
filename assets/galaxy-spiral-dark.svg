@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
+  <defs>
+    <radialGradient id="coreGlow-dark"><stop offset="0%" stop-color="rgba(140,150,175,0.4)"/><stop offset="100%" stop-color="rgba(140,150,175,0)"/></radialGradient>
+  </defs>
+  <g transform="rotate(-20 48 48)">
+    <path d="M 48.0 48.0 L 50.7 49.1 L 51.5 50.5 L 51.0 52.0 L 49.4 53.4 L 46.8 54.4 L 43.4 54.8 L 39.7 54.4 L 36.1 53.2 L 33.1 51.3 L 30.9 48.7 L 30.1 45.6 L 30.8 42.3 L 33.2 39.1 L 37.2 36.3 L 42.5 34.2 L 48.8 33.1 L 55.7 33.2 L 62.5 34.6 L 68.7 37.1 L 73.6 40.8 L 76.8 45.4 L 77.9 50.4 L 76.6 55.7 L 72.8 60.6 L 66.8 64.8 L 59.0 68.0 " fill="none" stroke="rgba(140,150,175,0.28)" stroke-width="1.1" stroke-linecap="round"/>
+    <path d="M 48.0 48.0 L 45.3 46.9 L 44.5 45.5 L 45.0 44.0 L 46.6 42.6 L 49.2 41.6 L 52.6 41.2 L 56.3 41.6 L 59.9 42.8 L 62.9 44.7 L 65.1 47.3 L 65.9 50.4 L 65.2 53.7 L 62.8 56.9 L 58.8 59.7 L 53.5 61.8 L 47.2 62.9 L 40.3 62.8 L 33.5 61.4 L 27.3 58.9 L 22.4 55.2 L 19.2 50.6 L 18.1 45.6 L 19.4 40.3 L 23.2 35.4 L 29.2 31.2 L 37.0 28.0 " fill="none" stroke="rgba(140,150,175,0.28)" stroke-width="1.1" stroke-linecap="round"/>
+    <circle cx="34.0" cy="38.6" r="0.7" fill="rgba(140,150,175,0.32)"/>
+  <circle cx="73.1" cy="40.9" r="0.7" fill="rgba(140,150,175,0.32)"/>
+  <circle cx="47.9" cy="69.8" r="0.7" fill="rgba(140,150,175,0.32)"/>
+  <circle cx="13.4" cy="34.3" r="0.6" fill="rgba(140,150,175,0.32)"/>
+  <circle cx="32.0" cy="48.3" r="0.6" fill="rgba(140,150,175,0.32)"/>
+  <circle cx="65.8" cy="37.2" r="0.6" fill="rgba(140,150,175,0.32)"/>
+  <circle cx="62.2" cy="65.5" r="0.5" fill="rgba(140,150,175,0.32)"/>
+  <circle cx="10.5" cy="49.5" r="0.8" fill="rgba(140,150,175,0.32)"/>
+  <circle cx="36.2" cy="50.6" r="0.8" fill="rgba(140,150,175,0.32)"/>
+  <circle cx="56.6" cy="35.4" r="0.8" fill="rgba(140,150,175,0.32)"/>
+  </g>
+  <circle cx="48" cy="48" r="10" fill="url(#coreGlow-dark)"/>
+  <circle cx="48" cy="48" r="2.2" fill="rgba(140,150,175,0.55)"/>
+</svg>
