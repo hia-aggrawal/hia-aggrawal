@@ -92,6 +92,84 @@ function generateHero() {
   console.log('wrote hero-banner.svg')
 }
 
+// ---------- Expeditions timeline: dashed rail + sparkle markers, baked-in text ----------
+function generateExpeditionsTimeline() {
+  const ENTRIES = [
+    {
+      role: 'AI Engineering Intern',
+      org: 'IBM',
+      dates: 'May 2026 – Present',
+      desc: 'Mapping business goals into strategic opportunities through agent workflows and context-aware systems.',
+    },
+    {
+      role: 'AI/ML Engineering Intern',
+      org: 'Alphavima Technologies',
+      dates: 'May 2025 – Apr 2026',
+      desc: 'Built semantic recommendation, demand forecasting, and natural-language-to-SQL systems for enterprise CRM tooling.',
+    },
+    {
+      role: 'Software Developer Intern',
+      org: 'Alphavima Technologies',
+      dates: 'May 2024 – Aug 2024',
+      desc: 'Shipped two enterprise mobile apps end to end on the Microsoft Power Platform.',
+    },
+    {
+      role: 'Software Developer Intern',
+      org: 'The Home Depot Canada',
+      dates: 'May 2023 – Aug 2023',
+      desc: 'Strengthened delivery validation and order-tracking systems.',
+    },
+  ]
+
+  const W = 1120
+  const ROW_H = 108
+  const PAD_TOP = 44
+  const PAD_BOTTOM = 36
+  const H = PAD_TOP + ENTRIES.length * ROW_H + PAD_BOTTOM
+  const railX = 44
+  const textX = 82
+  const darkPalette = PALETTES.dark
+
+  const escape = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+
+  const railTop = PAD_TOP
+  const railBottom = PAD_TOP + (ENTRIES.length - 1) * ROW_H
+  const rail = `<line x1="${railX}" y1="${railTop}" x2="${railX}" y2="${railBottom}" stroke="rgba(${darkPalette.strokeGray.join(',')},0.4)" stroke-width="1" stroke-dasharray="2 4"/>`
+
+  const rows = ENTRIES.map((entry, i) => {
+    const cy = PAD_TOP + i * ROW_H
+    const color = stageColor(i / (ENTRIES.length - 1), darkPalette)
+    const marker = `<g class="twinkle" style="--dur:${(2.8 + i * 0.4).toFixed(1)}s;--delay:${(-i * 0.6).toFixed(1)}s">
+      <circle cx="${railX}" cy="${cy}" r="9" fill="rgba(${color},0.28)"/>
+      <path d="${sparklePath(railX, cy, 4.5, 4.5)}" fill="rgb(${color})"/>
+    </g>`
+    const role = `<text x="${textX}" y="${cy - 8}" font-size="15" font-weight="600" fill="#e8ecf5">${escape(entry.role)} <tspan fill="#6f7d99" font-weight="400">&#183; ${escape(entry.org)}</tspan></text>`
+    const dates = `<text x="${textX}" y="${cy + 10}" font-size="11.5" fill="#5b6b86" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">${escape(entry.dates)}</text>`
+    const desc = `<text x="${textX}" y="${cy + 30}" font-size="12.5" font-style="italic" fill="#8a97b8">${escape(entry.desc)}</text>`
+    return `${marker}\n  ${role}\n  ${dates}\n  ${desc}`
+  }).join('\n  ')
+
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
+  <defs>
+    <radialGradient id="sky" cx="50%" cy="0%" r="100%">
+      <stop offset="0%" stop-color="#0a0d1c"/>
+      <stop offset="60%" stop-color="#060812"/>
+    </radialGradient>
+  </defs>
+  <style>
+    @keyframes twinkle { 0%, 100% { opacity: 0.55; transform: scale(0.88); } 50% { opacity: 1; transform: scale(1); } }
+    .twinkle { transform-origin: center; transform-box: fill-box; animation: twinkle var(--dur, 3s) ease-in-out infinite; animation-delay: var(--delay, 0s); }
+    @media (prefers-reduced-motion: reduce) { .twinkle { animation: none; } }
+  </style>
+  <rect x="0" y="0" width="${W}" height="${H}" fill="url(#sky)"/>
+  ${rail}
+  ${rows}
+</svg>
+`
+  writeFileSync(`${OUT}/expeditions-timeline.svg`, svg)
+  console.log('wrote expeditions-timeline.svg')
+}
+
 // ---------- Divider sparkle (light + dark) ----------
 function generateDivider() {
   for (const mode of ['dark', 'light']) {
@@ -331,6 +409,7 @@ function generateGalaxies() {
 }
 
 generateHero()
+generateExpeditionsTimeline()
 generateDivider()
 generateContactIcons()
 generatePlanets()

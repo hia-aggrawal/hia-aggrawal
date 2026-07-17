@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="512" viewBox="0 0 1120 512" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
+  <defs>
+    <radialGradient id="sky" cx="50%" cy="0%" r="100%">
+      <stop offset="0%" stop-color="#0a0d1c"/>
+      <stop offset="60%" stop-color="#060812"/>
+    </radialGradient>
+  </defs>
+  <style>
+    @keyframes twinkle { 0%, 100% { opacity: 0.55; transform: scale(0.88); } 50% { opacity: 1; transform: scale(1); } }
+    .twinkle { transform-origin: center; transform-box: fill-box; animation: twinkle var(--dur, 3s) ease-in-out infinite; animation-delay: var(--delay, 0s); }
+    @media (prefers-reduced-motion: reduce) { .twinkle { animation: none; } }
+  </style>
+  <rect x="0" y="0" width="1120" height="512" fill="url(#sky)"/>
+  <line x1="44" y1="44" x2="44" y2="368" stroke="rgba(140,150,175,0.4)" stroke-width="1" stroke-dasharray="2 4"/>
+  <g class="twinkle" style="--dur:2.8s;--delay:0.0s">
+      <circle cx="44" cy="44" r="9" fill="rgba(159, 201, 255,0.28)"/>
+      <path d="M 44.0 39.5 Q 44.7 43.3 48.5 44.0 Q 44.7 44.7 44.0 48.5 Q 43.3 44.7 39.5 44.0 Q 43.3 43.3 44.0 39.5 Z" fill="rgb(159, 201, 255)"/>
+    </g>
+  <text x="82" y="36" font-size="15" font-weight="600" fill="#e8ecf5">AI Engineering Intern <tspan fill="#6f7d99" font-weight="400">&#183; IBM</tspan></text>
+  <text x="82" y="54" font-size="11.5" fill="#5b6b86" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">May 2026 – Present</text>
+  <text x="82" y="74" font-size="12.5" font-style="italic" fill="#8a97b8">Mapping business goals into strategic opportunities through agent workflows and context-aware systems.</text>
+  <g class="twinkle" style="--dur:3.2s;--delay:-0.6s">
+      <circle cx="44" cy="152" r="9" fill="rgba(191, 216, 245,0.28)"/>
+      <path d="M 44.0 147.5 Q 44.7 151.3 48.5 152.0 Q 44.7 152.7 44.0 156.5 Q 43.3 152.7 39.5 152.0 Q 43.3 151.3 44.0 147.5 Z" fill="rgb(191, 216, 245)"/>
+    </g>
+  <text x="82" y="144" font-size="15" font-weight="600" fill="#e8ecf5">AI/ML Engineering Intern <tspan fill="#6f7d99" font-weight="400">&#183; Alphavima Technologies</tspan></text>
+  <text x="82" y="162" font-size="11.5" fill="#5b6b86" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">May 2025 – Apr 2026</text>
+  <text x="82" y="182" font-size="12.5" font-style="italic" fill="#8a97b8">Built semantic recommendation, demand forecasting, and natural-language-to-SQL systems for enterprise CRM tooling.</text>
+  <g class="twinkle" style="--dur:3.6s;--delay:-1.2s">
+      <circle cx="44" cy="260" r="9" fill="rgba(223, 231, 234,0.28)"/>
+      <path d="M 44.0 255.5 Q 44.7 259.3 48.5 260.0 Q 44.7 260.7 44.0 264.5 Q 43.3 260.7 39.5 260.0 Q 43.3 259.3 44.0 255.5 Z" fill="rgb(223, 231, 234)"/>
+    </g>
+  <text x="82" y="252" font-size="15" font-weight="600" fill="#e8ecf5">Software Developer Intern <tspan fill="#6f7d99" font-weight="400">&#183; Alphavima Technologies</tspan></text>
+  <text x="82" y="270" font-size="11.5" fill="#5b6b86" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">May 2024 – Aug 2024</text>
+  <text x="82" y="290" font-size="12.5" font-style="italic" fill="#8a97b8">Shipped two enterprise mobile apps end to end on the Microsoft Power Platform.</text>
+  <g class="twinkle" style="--dur:4.0s;--delay:-1.8s">
+      <circle cx="44" cy="368" r="9" fill="rgba(255, 246, 224,0.28)"/>
+      <path d="M 44.0 363.5 Q 44.7 367.3 48.5 368.0 Q 44.7 368.7 44.0 372.5 Q 43.3 368.7 39.5 368.0 Q 43.3 367.3 44.0 363.5 Z" fill="rgb(255, 246, 224)"/>
+    </g>
+  <text x="82" y="360" font-size="15" font-weight="600" fill="#e8ecf5">Software Developer Intern <tspan fill="#6f7d99" font-weight="400">&#183; The Home Depot Canada</tspan></text>
+  <text x="82" y="378" font-size="11.5" fill="#5b6b86" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">May 2023 – Aug 2023</text>
+  <text x="82" y="398" font-size="12.5" font-style="italic" fill="#8a97b8">Strengthened delivery validation and order-tracking systems.</text>
+</svg>
