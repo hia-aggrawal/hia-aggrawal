@@ -37,21 +37,118 @@ function sparklePath(cx, cy, l, w) {
   return `M ${p(cx)} ${p(cy - l)} Q ${p(cx + w * k)} ${p(cy - l * k)} ${p(cx + w)} ${p(cy)} Q ${p(cx + w * k)} ${p(cy + l * k)} ${p(cx)} ${p(cy + l)} Q ${p(cx - w * k)} ${p(cy + l * k)} ${p(cx - w)} ${p(cy)} Q ${p(cx - w * k)} ${p(cy - l * k)} ${p(cx)} ${p(cy - l)} Z`
 }
 
+function ambientDust(seed, W, H, count) {
+  const rand = seededRandom(seed)
+  const darkPalette = PALETTES.dark
+  let dust = ''
+  for (let i = 0; i < count; i++) {
+    const x = rand() * W
+    const y = rand() * H
+    const r = 0.5 + rand() * 1.0
+    const alpha = (0.12 + rand() * 0.28).toFixed(2)
+    dust += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}" fill="rgba(${stageColor(rand(), darkPalette)},${alpha})"/>\n  `
+  }
+  return dust
+}
+
+// ---------- Label/value card: dark sky, ambient dust, rounded corners, baked text ----------
+function generateLabelValueCard(filename, entries) {
+  const W = 1120
+  const ROW_H = 74
+  const PAD_TOP = 40
+  const PAD_BOTTOM = 32
+  const H = PAD_TOP + entries.length * ROW_H + PAD_BOTTOM
+  const textX = 60
+  const dust = ambientDust(filename, W, H, 22)
+
+  const rows = entries.map((entry, i) => {
+    const cy = PAD_TOP + i * ROW_H + 10
+    return `<text x="${textX}" y="${cy}" font-size="12.5" font-weight="600" letter-spacing="0.06em" fill="#6f7d99">${entry.label.toUpperCase()}</text>
+  <text x="${textX}" y="${cy + 26}" font-size="18" fill="#e8ecf5">${entry.value}</text>`
+  }).join('\n  ')
+
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
+  <defs>
+    <radialGradient id="sky" cx="50%" cy="0%" r="100%">
+      <stop offset="0%" stop-color="#0a0d1c"/>
+      <stop offset="60%" stop-color="#060812"/>
+    </radialGradient>
+    <clipPath id="frame-${filename}"><rect x="0" y="0" width="${W}" height="${H}" rx="18"/></clipPath>
+  </defs>
+  <g clip-path="url(#frame-${filename})">
+    <rect x="0" y="0" width="${W}" height="${H}" fill="url(#sky)"/>
+    ${dust}
+    ${rows}
+  </g>
+</svg>
+`
+  writeFileSync(`${OUT}/${filename}.svg`, svg)
+  console.log(`wrote ${filename}.svg`)
+}
+
+function asteroidPolygon(cx, cy, avgR, points, seed) {
+  const rand = seededRandom(seed)
+  let path = ''
+  for (let i = 0; i < points; i++) {
+    const angle = (i / points) * Math.PI * 2
+    const r = avgR * (0.7 + rand() * 0.6)
+    const x = cx + r * Math.cos(angle)
+    const y = cy + r * Math.sin(angle)
+    path += `${i === 0 ? 'M' : 'L'} ${x.toFixed(1)} ${y.toFixed(1)} `
+  }
+  return path + 'Z'
+}
+
+// ---------- Asteroid belt: short strip to sit beside each mission planet, transparent bg ----------
+function generateAsteroidBelt() {
+  const W = 640
+  const H = 50
+
+  for (const mode of ['dark', 'light']) {
+    const rand = seededRandom(`asteroid-belt-v2-${mode}`)
+    const palette = PALETTES[mode]
+
+    const rocks = []
+    const count = 18
+    for (let i = 0; i < count; i++) {
+      const t = i / (count - 1)
+      const x = 12 + t * (W - 24) + (rand() - 0.5) * 16
+      const y = H / 2 + (rand() - 0.5) * 20
+      const r = 1.3 + rand() * 3
+      const points = 6 + Math.floor(rand() * 3)
+      const shade = 0.15 + rand() * 0.55
+      const color = stageColor(shade, palette)
+      const alpha = (mode === 'light' ? 0.55 : 0.5) + rand() * 0.35
+      const seed = `asteroid-${mode}-${i}`
+      const path = asteroidPolygon(x, y, r, points, seed)
+      const animate = rand() < 0.4
+      const dur = (14 + rand() * 10).toFixed(1)
+      const delay = (-rand() * 20).toFixed(1)
+      const cls = animate ? ' class="drift"' : ''
+      const style = animate ? ` style="--ddur:${dur}s;--ddelay:${delay}s"` : ''
+      rocks.push(`<path${cls}${style} d="${path}" fill="rgba(${color},${alpha.toFixed(2)})"/>`)
+    }
+
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
+  <style>
+    @keyframes drift { 0% { transform: translateX(-6px); } 100% { transform: translateX(6px); } }
+    .drift { animation: drift var(--ddur, 16s) ease-in-out infinite alternate; animation-delay: var(--ddelay, 0s); }
+    @media (prefers-reduced-motion: reduce) { .drift { animation: none; } }
+  </style>
+  ${rocks.join('\n  ')}
+</svg>
+`
+    writeFileSync(`${OUT}/asteroid-belt-${mode}.svg`, svg)
+  }
+  console.log('wrote asteroid-belt-{dark,light}.svg')
+}
+
 // ---------- Hero banner: quiet night sky, small observatory silhouette, name only ----------
 function generateHero() {
   const W = 1120
   const H = 260
-  const rand = seededRandom('hero-v2')
   const darkPalette = PALETTES.dark
-
-  let dust = ''
-  for (let i = 0; i < 26; i++) {
-    const x = rand() * W
-    const y = rand() * (H * 0.62)
-    const r = 0.5 + rand() * 1.0
-    const alpha = (0.15 + rand() * 0.3).toFixed(2)
-    dust += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}" fill="rgba(${stageColor(rand(), darkPalette)},${alpha})"/>\n  `
-  }
+  const dust = ambientDust('hero-v2', W, H * 0.62, 26)
 
   const sx = 980, sy = 46, sr = 5
   const sColor = stageColor(0.75, darkPalette)
@@ -70,22 +167,25 @@ function generateHero() {
       <stop offset="0%" stop-color="#f5f3ea"/>
       <stop offset="100%" stop-color="#c9c6ba"/>
     </radialGradient>
+    <clipPath id="heroFrame"><rect x="0" y="0" width="${W}" height="${H}" rx="18"/></clipPath>
   </defs>
   <style>
     @keyframes twinkle { 0%, 100% { opacity: 0.5; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1); } }
     .twinkle { transform-origin: center; transform-box: fill-box; animation: twinkle 3.4s ease-in-out infinite; }
     @media (prefers-reduced-motion: reduce) { .twinkle { animation: none; } }
   </style>
-  <rect x="0" y="0" width="${W}" height="${H}" fill="url(#sky)"/>
-  ${dust}
-  <circle cx="1040" cy="54" r="20" fill="url(#moon)" opacity="0.9"/>
-  <g class="twinkle">
-    <circle cx="${sx}" cy="${sy}" r="${(sr * 1.6).toFixed(1)}" fill="url(#heroGlow)"/>
-    <path d="${sparklePath(sx, sy, sr, sr)}" fill="rgb(${sColor})"/>
+  <g clip-path="url(#heroFrame)">
+    <rect x="0" y="0" width="${W}" height="${H}" fill="url(#sky)"/>
+    ${dust}
+    <circle cx="1040" cy="54" r="20" fill="url(#moon)" opacity="0.9"/>
+    <g class="twinkle">
+      <circle cx="${sx}" cy="${sy}" r="${(sr * 1.6).toFixed(1)}" fill="url(#heroGlow)"/>
+      <path d="${sparklePath(sx, sy, sr, sr)}" fill="rgb(${sColor})"/>
+    </g>
+    <path d="${hillPath}" fill="#03040a" opacity="0.9"/>
+    <rect x="${domeX - 3}" y="${domeY - domeR - 6}" width="6" height="10" fill="#03040a" opacity="0.9"/>
+    <text x="60" y="108" font-size="30" font-weight="600" fill="#e8ecf5" letter-spacing="0.2">Hia Aggrawal</text>
   </g>
-  <path d="${hillPath}" fill="#03040a" opacity="0.9"/>
-  <rect x="${domeX - 3}" y="${domeY - domeR - 6}" width="6" height="10" fill="#03040a" opacity="0.9"/>
-  <text x="60" y="108" font-size="30" font-weight="600" fill="#e8ecf5" letter-spacing="0.2">Hia Aggrawal</text>
 </svg>
 `
   writeFileSync(`${OUT}/hero-banner.svg`, svg)
@@ -122,13 +222,14 @@ function generateExpeditionsTimeline() {
   ]
 
   const W = 1120
-  const ROW_H = 108
-  const PAD_TOP = 44
-  const PAD_BOTTOM = 36
+  const ROW_H = 122
+  const PAD_TOP = 54
+  const PAD_BOTTOM = 44
   const H = PAD_TOP + ENTRIES.length * ROW_H + PAD_BOTTOM
-  const railX = 44
-  const textX = 82
+  const railX = 50
+  const textX = 92
   const darkPalette = PALETTES.dark
+  const dust = ambientDust('expeditions-timeline', W, H, 30)
 
   const escape = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
 
@@ -140,12 +241,12 @@ function generateExpeditionsTimeline() {
     const cy = PAD_TOP + i * ROW_H
     const color = stageColor(i / (ENTRIES.length - 1), darkPalette)
     const marker = `<g class="twinkle" style="--dur:${(2.8 + i * 0.4).toFixed(1)}s;--delay:${(-i * 0.6).toFixed(1)}s">
-      <circle cx="${railX}" cy="${cy}" r="9" fill="rgba(${color},0.28)"/>
-      <path d="${sparklePath(railX, cy, 4.5, 4.5)}" fill="rgb(${color})"/>
+      <circle cx="${railX}" cy="${cy}" r="11" fill="rgba(${color},0.28)"/>
+      <path d="${sparklePath(railX, cy, 5.5, 5.5)}" fill="rgb(${color})"/>
     </g>`
-    const role = `<text x="${textX}" y="${cy - 8}" font-size="15" font-weight="600" fill="#e8ecf5">${escape(entry.role)} <tspan fill="#6f7d99" font-weight="400">&#183; ${escape(entry.org)}</tspan></text>`
-    const dates = `<text x="${textX}" y="${cy + 10}" font-size="11.5" fill="#5b6b86" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">${escape(entry.dates)}</text>`
-    const desc = `<text x="${textX}" y="${cy + 30}" font-size="12.5" font-style="italic" fill="#8a97b8">${escape(entry.desc)}</text>`
+    const role = `<text x="${textX}" y="${cy - 12}" font-size="20" font-weight="600" fill="#e8ecf5">${escape(entry.role)} <tspan fill="#6f7d99" font-weight="400">&#183; ${escape(entry.org)}</tspan></text>`
+    const dates = `<text x="${textX}" y="${cy + 12}" font-size="14" fill="#5b6b86" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">${escape(entry.dates)}</text>`
+    const desc = `<text x="${textX}" y="${cy + 38}" font-size="16" font-style="italic" fill="#8a97b8">${escape(entry.desc)}</text>`
     return `${marker}\n  ${role}\n  ${dates}\n  ${desc}`
   }).join('\n  ')
 
@@ -155,15 +256,19 @@ function generateExpeditionsTimeline() {
       <stop offset="0%" stop-color="#0a0d1c"/>
       <stop offset="60%" stop-color="#060812"/>
     </radialGradient>
+    <clipPath id="timelineFrame"><rect x="0" y="0" width="${W}" height="${H}" rx="18"/></clipPath>
   </defs>
   <style>
     @keyframes twinkle { 0%, 100% { opacity: 0.55; transform: scale(0.88); } 50% { opacity: 1; transform: scale(1); } }
     .twinkle { transform-origin: center; transform-box: fill-box; animation: twinkle var(--dur, 3s) ease-in-out infinite; animation-delay: var(--delay, 0s); }
     @media (prefers-reduced-motion: reduce) { .twinkle { animation: none; } }
   </style>
-  <rect x="0" y="0" width="${W}" height="${H}" fill="url(#sky)"/>
-  ${rail}
-  ${rows}
+  <g clip-path="url(#timelineFrame)">
+    <rect x="0" y="0" width="${W}" height="${H}" fill="url(#sky)"/>
+    ${dust}
+    ${rail}
+    ${rows}
+  </g>
 </svg>
 `
   writeFileSync(`${OUT}/expeditions-timeline.svg`, svg)
@@ -410,6 +515,19 @@ function generateGalaxies() {
 
 generateHero()
 generateExpeditionsTimeline()
+generateLabelValueCard('field-notes-card', [
+  { label: 'Studying', value: 'Honours B.Sc., Computer Science (PEY Co-op), University of Toronto Mississauga &#183; 2022&#8211;2027' },
+  { label: 'Currently', value: 'AI Engineering Intern at IBM, building agent workflows and context-aware systems' },
+  { label: 'Focus', value: 'Applied AI, backend systems, and full-stack product engineering' },
+  { label: 'Beyond', value: 'Music, art, crochet, and travel' },
+])
+generateLabelValueCard('skills-card', [
+  { label: 'Languages', value: 'Python &#183; Java &#183; JavaScript &#183; TypeScript &#183; C/C++ &#183; C#' },
+  { label: 'AI &amp; Data', value: 'scikit-learn &#183; XGBoost &#183; Hugging Face &#183; TensorFlow &#183; PyTorch &#183; pandas' },
+  { label: 'Frameworks', value: 'React &#183; Flask &#183; Spring Boot &#183; Tailwind CSS' },
+  { label: 'Cloud &amp; Platform', value: 'Azure &#183; Docker &#183; Kubernetes &#183; Power Platform' },
+])
+generateAsteroidBelt()
 generateDivider()
 generateContactIcons()
 generatePlanets()

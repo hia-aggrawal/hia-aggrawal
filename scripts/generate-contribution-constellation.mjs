@@ -203,6 +203,7 @@ function renderSvg({ stars, weeks, cols, links, total, year }) {
       <stop offset="0%" stop-color="#0a0d1c"/>
       <stop offset="60%" stop-color="#060812"/>
     </radialGradient>
+    <clipPath id="constellationFrame"><rect x="0" y="0" width="${width}" height="${boxHeight}" rx="18"/></clipPath>
     ${defs.join('\n    ')}
   </defs>
   <style>
@@ -218,7 +219,7 @@ function renderSvg({ stars, weeks, cols, links, total, year }) {
     }
   </style>
   <text x="0" y="14" font-size="11" fill="#7f8bab">${year} &#183; ${total} contributions</text>
-  <g transform="translate(0, ${CAPTION_BAND})">
+  <g transform="translate(0, ${CAPTION_BAND})" clip-path="url(#constellationFrame)">
     <rect x="0" y="0" width="${width}" height="${boxHeight}" fill="url(#sky)"/>
     ${months.join('\n    ')}
     ${lines}

@@ -4,6 +4,7 @@
       <stop offset="0%" stop-color="#0a0d1c"/>
       <stop offset="60%" stop-color="#060812"/>
     </radialGradient>
+    <clipPath id="constellationFrame"><rect x="0" y="0" width="1120" height="220" rx="18"/></clipPath>
     <radialGradient id="g3"><stop offset="0%" stop-color="rgb(220, 230, 235)" stop-opacity="0.65"/><stop offset="100%" stop-color="rgb(220, 230, 235)" stop-opacity="0"/></radialGradient>
     <radialGradient id="g6"><stop offset="0%" stop-color="rgb(203, 221, 241)" stop-opacity="0.65"/><stop offset="100%" stop-color="rgb(203, 221, 241)" stop-opacity="0"/></radialGradient>
     <radialGradient id="g12"><stop offset="0%" stop-color="rgb(255, 246, 224)" stop-opacity="0.65"/><stop offset="100%" stop-color="rgb(255, 246, 224)" stop-opacity="0"/></radialGradient>
@@ -23,7 +24,7 @@
     }
   </style>
   <text x="0" y="14" font-size="11" fill="#7f8bab">2026 &#183; 99 contributions</text>
-  <g transform="translate(0, 22)">
+  <g transform="translate(0, 22)" clip-path="url(#constellationFrame)">
     <rect x="0" y="0" width="1120" height="220" fill="url(#sky)"/>
     <text x="30.0" y="24.0" font-size="10" fill="#5b6b7f">Jan</text>
     <text x="130.0" y="24.0" font-size="10" fill="#5b6b7f">Feb</text>

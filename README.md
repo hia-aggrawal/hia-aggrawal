@@ -8,17 +8,11 @@
 
 ## Field Notes
 
-**Studying** — Honours B.Sc., Computer Science (PEY Co-op), University of Toronto Mississauga · 2022–2027  
-**Currently** — AI Engineering Intern at IBM, building agent workflows and context-aware systems  
-**Focus** — Applied AI, backend systems, and full-stack product engineering  
-**Beyond** — Music, art, crochet, and travel
+<img src="./assets/field-notes-card.svg" width="100%" alt="Studying: Honours B.Sc., Computer Science (PEY Co-op), University of Toronto Mississauga, 2022–2027. Currently: AI Engineering Intern at IBM, building agent workflows and context-aware systems. Focus: Applied AI, backend systems, and full-stack product engineering. Beyond: Music, art, crochet, and travel." />
 
 ## Skills
 
-**Languages** — Python · Java · JavaScript · TypeScript · C/C++ · C#  
-**AI & Data** — scikit-learn · XGBoost · Hugging Face · TensorFlow · PyTorch · pandas  
-**Frameworks** — React · Flask · Spring Boot · Tailwind CSS  
-**Cloud & Platform** — Azure · Docker · Kubernetes · Power Platform
+<img src="./assets/skills-card.svg" width="100%" alt="Languages: Python, Java, JavaScript, TypeScript, C/C++, C#. AI & Data: scikit-learn, XGBoost, Hugging Face, TensorFlow, PyTorch, pandas. Frameworks: React, Flask, Spring Boot, Tailwind CSS. Cloud & Platform: Azure, Docker, Kubernetes, Power Platform." />
 
 ## Expeditions
 
@@ -26,30 +20,30 @@
 
 ## Missions
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="./assets/planet-ringed-dark.svg"><img src="./assets/planet-ringed-light.svg" width="46" /></picture>  
+<picture><source media="(prefers-color-scheme: dark)" srcset="./assets/planet-ringed-dark.svg"><img src="./assets/planet-ringed-light.svg" width="90" align="middle" /></picture><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/asteroid-belt-dark.svg"><img src="./assets/asteroid-belt-light.svg" width="480" align="middle" alt="" /></picture>  
 **[Model Comparison Challenge](https://github.com/hia-aggrawal/CSC311_ml_challenge)**  
 *Comparing KNN, decision trees, logistic regression, and neural networks on a shared prediction task.*  
 <sub>Python · scikit-learn</sub>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="./assets/planet-banded-dark.svg"><img src="./assets/planet-banded-light.svg" width="46" /></picture>  
+<picture><source media="(prefers-color-scheme: dark)" srcset="./assets/planet-banded-dark.svg"><img src="./assets/planet-banded-light.svg" width="90" align="middle" /></picture><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/asteroid-belt-dark.svg"><img src="./assets/asteroid-belt-light.svg" width="480" align="middle" alt="" /></picture>  
 **[Simulations & Structures](https://github.com/hia-aggrawal/CSC148)**  
 *An event-driven ride-sharing simulation and a recursive treemap visualizer.*  
 <sub>Python · Data Structures</sub>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="./assets/planet-cratered-dark.svg"><img src="./assets/planet-cratered-light.svg" width="46" /></picture>  
+<picture><source media="(prefers-color-scheme: dark)" srcset="./assets/planet-cratered-dark.svg"><img src="./assets/planet-cratered-light.svg" width="90" align="middle" /></picture><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/asteroid-belt-dark.svg"><img src="./assets/asteroid-belt-light.svg" width="480" align="middle" alt="" /></picture>  
 **[Systems & Signals](https://github.com/hia-aggrawal/CSC209)**  
 *Audio manipulation in C (echo, vocal removal) and a socket-based multiplayer battle server.*  
 <sub>C · Unix · Sockets</sub>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="./assets/planet-mooned-dark.svg"><img src="./assets/planet-mooned-light.svg" width="46" /></picture>  
+<picture><source media="(prefers-color-scheme: dark)" srcset="./assets/planet-mooned-dark.svg"><img src="./assets/planet-mooned-light.svg" width="90" align="middle" /></picture><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/asteroid-belt-dark.svg"><img src="./assets/asteroid-belt-light.svg" width="480" align="middle" alt="" /></picture>  
 **[Code Chronicles: A Wizard's Quest](https://github.com/hia-aggrawal/CSC207)**  
 *A text adventure game built with OOP and design patterns.*  
 <sub>Java · Design Patterns</sub>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="./assets/galaxy-spiral-dark.svg"><img src="./assets/galaxy-spiral-light.svg" width="46" /></picture>  
+<picture><source media="(prefers-color-scheme: dark)" srcset="./assets/galaxy-spiral-dark.svg"><img src="./assets/galaxy-spiral-light.svg" width="90" /></picture>  
 *Coming soon*
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="./assets/galaxy-elliptical-dark.svg"><img src="./assets/galaxy-elliptical-light.svg" width="46" /></picture>  
+<picture><source media="(prefers-color-scheme: dark)" srcset="./assets/galaxy-elliptical-dark.svg"><img src="./assets/galaxy-elliptical-light.svg" width="90" /></picture>  
 *Coming soon*
 
 <p align="center">

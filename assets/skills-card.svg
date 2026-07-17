@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="368" viewBox="0 0 1120 368" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
+  <defs>
+    <radialGradient id="sky" cx="50%" cy="0%" r="100%">
+      <stop offset="0%" stop-color="#0a0d1c"/>
+      <stop offset="60%" stop-color="#060812"/>
+    </radialGradient>
+    <clipPath id="frame-skills-card"><rect x="0" y="0" width="1120" height="368" rx="18"/></clipPath>
+  </defs>
+  <g clip-path="url(#frame-skills-card)">
+    <rect x="0" y="0" width="1120" height="368" fill="url(#sky)"/>
+    <circle cx="1109.5" cy="292.6" r="1.1" fill="rgba(212, 226, 238,0.14)"/>
+  <circle cx="84.2" cy="139.0" r="1.2" fill="rgba(204, 222, 240,0.20)"/>
+  <circle cx="407.7" cy="109.6" r="1.3" fill="rgba(170, 206, 252,0.27)"/>
+  <circle cx="416.1" cy="311.3" r="1.0" fill="rgba(235, 237, 231,0.35)"/>
+  <circle cx="957.9" cy="110.4" r="0.8" fill="rgba(176, 209, 249,0.36)"/>
+  <circle cx="477.3" cy="48.5" r="0.5" fill="rgba(190, 216, 245,0.26)"/>
+  <circle cx="235.1" cy="163.4" r="1.2" fill="rgba(163, 203, 254,0.25)"/>
+  <circle cx="926.1" cy="297.1" r="1.2" fill="rgba(162, 203, 254,0.34)"/>
+  <circle cx="927.1" cy="321.2" r="1.1" fill="rgba(220, 230, 235,0.25)"/>
+  <circle cx="52.2" cy="240.8" r="1.0" fill="rgba(234, 236, 231,0.26)"/>
+  <circle cx="395.8" cy="55.2" r="0.6" fill="rgba(179, 211, 248,0.19)"/>
+  <circle cx="115.7" cy="75.9" r="0.6" fill="rgba(161, 202, 254,0.31)"/>
+  <circle cx="396.5" cy="119.6" r="0.6" fill="rgba(170, 206, 251,0.25)"/>
+  <circle cx="538.4" cy="73.9" r="0.5" fill="rgba(232, 235, 231,0.16)"/>
+  <circle cx="508.2" cy="205.6" r="0.5" fill="rgba(227, 233, 233,0.27)"/>
+  <circle cx="323.5" cy="59.4" r="1.0" fill="rgba(231, 235, 232,0.28)"/>
+  <circle cx="703.7" cy="233.0" r="0.6" fill="rgba(204, 222, 241,0.13)"/>
+  <circle cx="874.0" cy="16.6" r="1.2" fill="rgba(231, 235, 232,0.26)"/>
+  <circle cx="16.8" cy="230.6" r="0.6" fill="rgba(185, 213, 247,0.23)"/>
+  <circle cx="201.0" cy="302.6" r="1.5" fill="rgba(215, 227, 237,0.25)"/>
+  <circle cx="904.8" cy="201.6" r="0.6" fill="rgba(209, 225, 239,0.23)"/>
+  <circle cx="610.3" cy="333.7" r="1.1" fill="rgba(255, 246, 224,0.26)"/>
+  
+    <text x="60" y="50" font-size="12.5" font-weight="600" letter-spacing="0.06em" fill="#6f7d99">LANGUAGES</text>
+  <text x="60" y="76" font-size="18" fill="#e8ecf5">Python &#183; Java &#183; JavaScript &#183; TypeScript &#183; C/C++ &#183; C#</text>
+  <text x="60" y="124" font-size="12.5" font-weight="600" letter-spacing="0.06em" fill="#6f7d99">AI &AMP; DATA</text>
+  <text x="60" y="150" font-size="18" fill="#e8ecf5">scikit-learn &#183; XGBoost &#183; Hugging Face &#183; TensorFlow &#183; PyTorch &#183; pandas</text>
+  <text x="60" y="198" font-size="12.5" font-weight="600" letter-spacing="0.06em" fill="#6f7d99">FRAMEWORKS</text>
+  <text x="60" y="224" font-size="18" fill="#e8ecf5">React &#183; Flask &#183; Spring Boot &#183; Tailwind CSS</text>
+  <text x="60" y="272" font-size="12.5" font-weight="600" letter-spacing="0.06em" fill="#6f7d99">CLOUD &AMP; PLATFORM</text>
+  <text x="60" y="298" font-size="18" fill="#e8ecf5">Azure &#183; Docker &#183; Kubernetes &#183; Power Platform</text>
+  </g>
+</svg>

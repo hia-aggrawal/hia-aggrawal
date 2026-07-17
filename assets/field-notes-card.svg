@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="368" viewBox="0 0 1120 368" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
+  <defs>
+    <radialGradient id="sky" cx="50%" cy="0%" r="100%">
+      <stop offset="0%" stop-color="#0a0d1c"/>
+      <stop offset="60%" stop-color="#060812"/>
+    </radialGradient>
+    <clipPath id="frame-field-notes-card"><rect x="0" y="0" width="1120" height="368" rx="18"/></clipPath>
+  </defs>
+  <g clip-path="url(#frame-field-notes-card)">
+    <rect x="0" y="0" width="1120" height="368" fill="url(#sky)"/>
+    <circle cx="617.5" cy="357.9" r="0.8" fill="rgba(184, 213, 247,0.22)"/>
+  <circle cx="239.0" cy="51.1" r="0.9" fill="rgba(242, 240, 228,0.30)"/>
+  <circle cx="114.5" cy="72.9" r="0.6" fill="rgba(161, 202, 254,0.19)"/>
+  <circle cx="578.7" cy="78.1" r="1.0" fill="rgba(174, 208, 250,0.29)"/>
+  <circle cx="409.2" cy="136.5" r="0.6" fill="rgba(237, 238, 230,0.21)"/>
+  <circle cx="732.7" cy="318.5" r="0.6" fill="rgba(213, 227, 237,0.17)"/>
+  <circle cx="126.1" cy="108.7" r="0.7" fill="rgba(253, 245, 225,0.26)"/>
+  <circle cx="1028.3" cy="301.9" r="1.0" fill="rgba(241, 240, 228,0.20)"/>
+  <circle cx="419.9" cy="59.7" r="1.0" fill="rgba(204, 222, 241,0.32)"/>
+  <circle cx="329.9" cy="135.1" r="1.4" fill="rgba(209, 225, 239,0.13)"/>
+  <circle cx="848.5" cy="100.9" r="0.9" fill="rgba(221, 230, 235,0.12)"/>
+  <circle cx="66.4" cy="356.8" r="1.3" fill="rgba(207, 223, 240,0.21)"/>
+  <circle cx="62.6" cy="33.4" r="1.3" fill="rgba(217, 228, 236,0.38)"/>
+  <circle cx="453.9" cy="33.3" r="1.3" fill="rgba(211, 225, 238,0.14)"/>
+  <circle cx="779.6" cy="54.9" r="1.4" fill="rgba(225, 232, 234,0.13)"/>
+  <circle cx="546.9" cy="109.9" r="0.5" fill="rgba(247, 242, 226,0.38)"/>
+  <circle cx="421.3" cy="112.7" r="0.9" fill="rgba(183, 212, 247,0.18)"/>
+  <circle cx="619.2" cy="333.3" r="1.4" fill="rgba(229, 234, 233,0.20)"/>
+  <circle cx="999.7" cy="210.4" r="0.9" fill="rgba(173, 208, 250,0.14)"/>
+  <circle cx="100.9" cy="192.3" r="0.9" fill="rgba(183, 212, 247,0.13)"/>
+  <circle cx="633.0" cy="39.3" r="1.4" fill="rgba(237, 238, 230,0.35)"/>
+  <circle cx="124.3" cy="306.5" r="1.1" fill="rgba(252, 245, 225,0.14)"/>
+  
+    <text x="60" y="50" font-size="12.5" font-weight="600" letter-spacing="0.06em" fill="#6f7d99">STUDYING</text>
+  <text x="60" y="76" font-size="18" fill="#e8ecf5">Honours B.Sc., Computer Science (PEY Co-op), University of Toronto Mississauga &#183; 2022&#8211;2027</text>
+  <text x="60" y="124" font-size="12.5" font-weight="600" letter-spacing="0.06em" fill="#6f7d99">CURRENTLY</text>
+  <text x="60" y="150" font-size="18" fill="#e8ecf5">AI Engineering Intern at IBM, building agent workflows and context-aware systems</text>
+  <text x="60" y="198" font-size="12.5" font-weight="600" letter-spacing="0.06em" fill="#6f7d99">FOCUS</text>
+  <text x="60" y="224" font-size="18" fill="#e8ecf5">Applied AI, backend systems, and full-stack product engineering</text>
+  <text x="60" y="272" font-size="12.5" font-weight="600" letter-spacing="0.06em" fill="#6f7d99">BEYOND</text>
+  <text x="60" y="298" font-size="18" fill="#e8ecf5">Music, art, crochet, and travel</text>
+  </g>
+</svg>
